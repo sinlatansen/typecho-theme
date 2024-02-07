@@ -429,9 +429,10 @@ div.code-toolbar {
   background: #1c1c1c;
 }
 
+/* 代码基础颜色样式 */
 code[class*="language-"],
 pre[class*="language-"] {
-  color: #f8f8f2 !important;
+  color: #b9218e !important;
 }
 
 code::-webkit-scrollbar-thumb {
