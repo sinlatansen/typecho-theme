@@ -446,7 +446,7 @@ code::-webkit-scrollbar-thumb {
   text-transform: uppercase;
   font-weight: 700 !important;
   font-size: 1.15em !important;
-  color: #eff !important;
+  color: #4870ac !important;
 }
 .toolbar-item > button {
   opacity: 1 !important;
@@ -558,7 +558,7 @@ pre[class*="language-"] {
   right: 8px;
   top: 7px;
   cursor: pointer;
-  color: #eff;
+  color: #4870ac;
   transition: transform 0.3s;
 }
 .toolbar > .toolbar-item:nth-child(2) > button {
@@ -571,7 +571,7 @@ pre[class*="language-"] {
 }
 #btn-copy-code {
   font-size: 14px !important;
-  color: #eff;
+  color: #4870ac;
 }
 #btn-copy-code:hover {
   color: var(--text-bg-hover);
