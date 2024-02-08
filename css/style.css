@@ -1,10 +1,10 @@
 /*
 此css用于适配移植
 */
-:root{
+:root {
   --btn-comm-bg: #fff;
 }
-[data-theme=dark]{
+[data-theme="dark"] {
   --btn-comm-bg: #1f1f1f;
 }
 .vmaster,
@@ -448,8 +448,8 @@ code::-webkit-scrollbar-thumb {
   font-size: 1.15em !important;
   color: #4870ac !important;
 }
-[data-theme="dark"] .toolbar-item >span{
-  color:#f8f8f2!important;
+[data-theme="dark"] .toolbar-item > span {
+  color: #f8f8f2 !important;
 }
 
 .toolbar-item > button {
@@ -465,18 +465,18 @@ code::-webkit-scrollbar-thumb {
 }
 
 div.code-toolbar {
-  background-color: #f6f8fa!important;/*深色*/
+  background-color: #f6f8fa !important; /*深色*/
 }
 [data-theme="dark"] div.code-toolbar {
-  background-color: #1c1c1c!important;/*深色*/
+  background-color: #1c1c1c !important; /*深色*/
 }
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #f6f8fa!important;
+  background: #f6f8fa !important;
 }
 [data-theme="dark"] :not(pre) > code[class*="language-"],
 [data-theme="dark"] pre[class*="language-"] {
-  background: #1c1c1c!important;
+  background: #1c1c1c !important;
 }
 
 div.code-toolbar,
@@ -569,9 +569,13 @@ pre[class*="language-"] {
   right: 8px;
   top: 7px;
   cursor: pointer;
-  color: #f6f8fa;
+  color: #4870ac;
   transition: transform 0.3s;
 }
+[data-theme="dark"] .expand {
+  color: #f6f8fa;
+}
+
 .toolbar > .toolbar-item:nth-child(2) > button {
   position: absolute;
   right: 25px;
@@ -582,8 +586,13 @@ pre[class*="language-"] {
 }
 #btn-copy-code {
   font-size: 14px !important;
+  color: #4870ac;
+}
+[data-theme="dark"] #btn-copy-code {
+  font-size: 14px !important;
   color: #f6f8fa;
 }
+
 #btn-copy-code:hover {
   color: var(--text-bg-hover);
   transition: color 0.2s;
@@ -647,8 +656,8 @@ pre[class*="language-"] {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.ads-wrap{
-    overflow: hidden;
+.ads-wrap {
+  overflow: hidden;
 }
 /*已移除内容*/
 /*#article-container.post-content ul>li:not(.tab):before {*/
