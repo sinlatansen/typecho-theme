@@ -5963,6 +5963,6 @@ blockquote.pullquote.right {
     max-height: 75vh !important;
   }
 }
-.post-content p {
-  text-indent: 2em !important;
-}
+/* .post-content p {
+  text-indent: 2em;
+} */
