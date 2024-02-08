@@ -448,6 +448,10 @@ code::-webkit-scrollbar-thumb {
   font-size: 1.15em !important;
   color: #4870ac !important;
 }
+[data-theme="dark"] .toolbar-item >span{
+  color:#f8f8f2!important;
+}
+
 .toolbar-item > button {
   opacity: 1 !important;
   border: none !important;
@@ -459,15 +463,22 @@ code::-webkit-scrollbar-thumb {
 .shelter {
   display: none;
 }
-/* 代码块上方颜色 */
+
 div.code-toolbar {
-  background-color: #f6f8fa !important;
+  background-color: #f6f8fa!important;/*深色*/
+}
+[data-theme="dark"] div.code-toolbar {
+  background-color: #1c1c1c!important;/*深色*/
 }
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #f6f8fa !important;
+  background: #f6f8fa!important;
 }
-/* 代码块背景色 */
+[data-theme="dark"] :not(pre) > code[class*="language-"],
+[data-theme="dark"] pre[class*="language-"] {
+  background: #1c1c1c!important;
+}
+
 div.code-toolbar,
 .code-toolbar > pre {
   border-radius: 7px;
@@ -558,7 +569,7 @@ pre[class*="language-"] {
   right: 8px;
   top: 7px;
   cursor: pointer;
-  color: #4870ac;
+  color: #f6f8fa;
   transition: transform 0.3s;
 }
 .toolbar > .toolbar-item:nth-child(2) > button {
@@ -571,7 +582,7 @@ pre[class*="language-"] {
 }
 #btn-copy-code {
   font-size: 14px !important;
-  color: #4870ac;
+  color: #f6f8fa;
 }
 #btn-copy-code:hover {
   color: var(--text-bg-hover);

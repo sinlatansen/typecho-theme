@@ -145,6 +145,9 @@ pre.line-numbers>code {
     text-align: right;
     background: #272c33
 }
+[data-theme="dark"] .line-numbers-rows>span:before {
+    color:#babbbc;
+}
 
 div.code-toolbar {
     font-size: 100%;
