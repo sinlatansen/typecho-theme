@@ -594,14 +594,22 @@ pre[class*="language-"] {
 }
 
 #btn-copy-code:hover {
-  color: var(--text-bg-hover);
+  color: #1c1c1c;
   transition: color 0.2s;
 }
+[data-theme="dark"] #btn-copy-code:hover {
+  color: #f6f8fa;
+}
+
 .copy-notices {
-  color: rgba(238, 255, 255, 0.8);
+  color: #4870ac;
   font-size: 14px;
   display: inline-block;
 }
+[data-theme="dark"] .copy-notices {
+  color: #f6f8fa;
+}
+
 .checkbox {
   margin: -4px 0 -20px 0px;
 }
