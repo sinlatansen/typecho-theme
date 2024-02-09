@@ -395,9 +395,14 @@ pre code {
 .expand-bcode {
   max-height: 100% !important;
 }
+
 .code-expand-btn i {
   color: #4870ac !important;
 }
+[data-theme="dark"] .code-expand-btn i {
+  color: #f8f8f2 !important;
+}
+
 div.code-toolbar {
   box-shadow: 0 5px 10px 0 rgb(144 164 174 / 40%);
 }
@@ -410,6 +415,10 @@ div.code-toolbar {
   background: #f6f8fa !important;
   border-radius: 7px;
 }
+[data-theme="dark"] #article-container .code-expand-btn {
+  background: #1c1c1c !important;
+}
+
 #post-content pre code {
   display: block;
   overflow-x: auto;
