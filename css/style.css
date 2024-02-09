@@ -396,7 +396,7 @@ pre code {
   max-height: 100% !important;
 }
 .code-expand-btn i {
-  color: white !important;
+  color: #4870ac !important;
 }
 div.code-toolbar {
   box-shadow: 0 5px 10px 0 rgb(144 164 174 / 40%);
@@ -405,12 +405,9 @@ div.code-toolbar {
   margin-bottom: 1.8em;
 }
 
+/*代码块扩展按钮*/
 #article-container .code-expand-btn {
-  background: linear-gradient(
-    180deg,
-    rgb(33 34 34 / 60%),
-    rgb(0 0 0 / 90%)
-  ) !important;
+  background: #f6f8fa !important;
   border-radius: 7px;
 }
 #post-content pre code {
