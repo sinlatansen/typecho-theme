@@ -7,9 +7,9 @@
         <i class="fas fa-book-open"></i>
       </button>
     <?php endif ?>
-    <button id="translateLink" type="button" title="简繁转换">
+    <!-- <button id="translateLink" type="button" title="简繁转换">
       繁
-    </button>
+    </button> -->
     <button id="darkmode" type="button" title="浅色和深色模式转换">
       <i class="fas fa-adjust">
       </i>
