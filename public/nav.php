@@ -9,7 +9,7 @@
             </a>
        </span>
             <div id="menus">
-                  <div id="search-button">
+                  <!-- <div id="search-button">
                       <a class="site-page social-icon search">
                       <i class="fas fa-search fa-fw"></i>
                       <?php if (is_array($this->options->beautifyBlock) && in_array('showNoAlertSearch',$this->options->beautifyBlock)): ?>
@@ -20,9 +20,17 @@
                         <span> 搜索</span>
                       <?php endif ?>
                       </a> 
-                      </div>
+                      </div> -->
                  <div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div>
               <div class="menus_items">
+                <div class="menus_item">
+            <a class="site-page search search-form-input">
+                <i class="fas fa-search fa-fw"></i>
+                <form method="post" action="<?php $this->options->siteUrl(); ?>" role="search" id="dSearch" style="display:inline;">
+                    搜索
+                </form>
+            </a>
+        </div>
                     <div class="menus_item">
                         <a class="site-page" href="<?php $this->options->siteUrl(); ?>">
                             <li class="fa-fw fas fa-home"></li><?php _e('首页'); ?></a>
