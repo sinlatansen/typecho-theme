@@ -9,6 +9,22 @@
 <head>
 <!-- 平滑滚动插件 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js"></script>
+<!-- 使用自定义设置启用平滑滚动 -->
+<script>
+        SmoothScroll({
+            animationTime: 400,
+            stepSize: 80,
+            pulseScale: 2,
+            pulseAlgorithm: true,
+            pulseNormalize: 1,
+            accelerationDelta: 20,
+            accelerationMax: 1,
+            keyboardSupport: true,
+            arrowScroll: 50,
+            fixedBackground: true
+        });
+</script>
+
 <!-- AI摘要机器人 -->
   <link rel="stylesheet" href="https://cdn1.tianli0.top/gh/zhheo/Post-Abstract-AI@0.15.2/tianli_gpt.css">
   <meta content="always" name="referrer">
