@@ -7,6 +7,7 @@
 <html data-theme="light" class="">
 
 <head>
+  <link rel="stylesheet" href="https://cdn1.tianli0.top/gh/zhheo/Post-Abstract-AI@0.15.2/tianli_gpt.css">
   <meta content="always" name="referrer">
   <link rel="icon" type="image/png" href="<?php $this->options->Sitefavicon() ?>">
   <meta charset="<?php $this->options->charset(); ?>">
