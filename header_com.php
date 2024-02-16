@@ -7,6 +7,9 @@
 <html data-theme="light" class="">
 
 <head>
+<!-- 平滑滚动插件 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js"></script>
+<!-- AI摘要机器人 -->
   <link rel="stylesheet" href="https://cdn1.tianli0.top/gh/zhheo/Post-Abstract-AI@0.15.2/tianli_gpt.css">
   <meta content="always" name="referrer">
   <link rel="icon" type="image/png" href="<?php $this->options->Sitefavicon() ?>">
