@@ -487,7 +487,7 @@
       <hr>
       <div class="menus_items">
         <div class="menus_item">
-            <a class="site-page search search-form-input">
+            <a class="site-page search search-form-input search-btn">
                 <i class="fas fa-search fa-fw"></i>
                 <form method="post" action="<?php $this->options->siteUrl(); ?>" role="search" id="dSearch" style="display:inline;">
                     搜索
@@ -536,4 +536,11 @@
     </div>
   </div>
   <!--移动导航栏-->
-
+<script>
+$(document).ready(function() {
+    $('.search-btn').on('click', function() {
+        $('#sidebar-menus').removeClass('open'); // 假设 'open' 类控制着侧栏的显示
+        $('#menu-mask').hide(); // 如果有遮罩层，也需要隐藏
+    });
+});
+</script>
