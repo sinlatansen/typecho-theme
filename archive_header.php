@@ -30,10 +30,10 @@
         <div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div>
                 <div class="menus_items">
                     <div class="menus_item">
-            <a class="site-page search">
+            <a class="site-page search search-form-input">
                 <i class="fas fa-search fa-fw"></i>
                 <form method="post" action="<?php $this->options->siteUrl(); ?>" role="search" id="dSearch" style="display:inline;">
-                    <input type="text" placeholder="搜索" id="dSearchIn" name="s" required="required">
+                    搜索
                 </form>
             </a>
         </div>

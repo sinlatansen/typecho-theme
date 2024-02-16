@@ -487,6 +487,14 @@
       <hr>
       <div class="menus_items">
         <div class="menus_item">
+            <a class="site-page search search-form-input">
+                <i class="fas fa-search fa-fw"></i>
+                <form method="post" action="<?php $this->options->siteUrl(); ?>" role="search" id="dSearch" style="display:inline;">
+                    搜索
+                </form>
+            </a>
+        </div>
+        <div class="menus_item">
           <a class="site-page" href="<?php $this->options->siteUrl(); ?>"><i class="fa-fw fas fa-home"></i><span> 首页</span></a>
         </div>
         <?php if ($this->options->EnableAutoHeaderLink === 'on') : ?>
@@ -528,3 +536,4 @@
     </div>
   </div>
   <!--移动导航栏-->
+
