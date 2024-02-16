@@ -1,4 +1,6 @@
 <?php  $this->need('header_com.php'); ?>
+<!--加载进度条插件-->
+<?php Typecho_Plugin::factory('Process')->render(); ?>
 <body style="zoom: 1;">
     <div id="web_bg"></div>
 <div class="page" id="body-wrap">

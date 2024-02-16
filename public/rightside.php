@@ -36,7 +36,7 @@
         </i>
       </a>
     <?php endif ?>
-    <button id="go-up" type="button" title="回到頂部" class="show-percent">
+    <button id="go-up" type="button" title="回到顶部" class="show-percent">
       <span class="scroll-percent"></span>
       <i class="fas fa-arrow-up">
       </i>
