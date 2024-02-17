@@ -11,43 +11,26 @@
                 alt="avatar">
             <script>
                 var image = document.getElementById('img_hover');
-
-                //悬停才显示版本
-                // var hoverCount = 0;
-                // image.addEventListener('mouseover', function() {
-                //     if(hoverCount%2===0){
-                //         this.src = this.dataset.hoverSrc;
-                //         console.log('鼠标悬停1');
-                //     }else{
-                //         this.src = 'https://s2.loli.net/2024/02/17/h41rvlyxgLnmcJK.jpg';
-                //         console.log('鼠标悬停2');
-                //     }
-                //     console.log(hoverCount);
-                //     hoverCount++; // 增加悬停计数
-                // });
-
-                // image.addEventListener('mouseout', function() {
-                //     this.src = this.dataset.lazySrc;
-                //     console.log('鼠标挪走');
-                // });
-
-                //直接切换版本
-                var state=0;
                 
+                var state=0;        
                 image.addEventListener('mouseover', function() {
-                    console.log('图1: ' + this.dataset.hoveroSrc);
-                    console.log('图2: ' + this.dataset.hovertSrc);
-                    state=state+1;
-                    console.log(state%3);
-                    if(state%3===1){
-                        this.src = "https://s2.loli.net/2024/02/17/h41rvlyxgLnmcJK.jpg";
-                    }else if(state%3===2){
-                        this.src = "https://s2.loli.net/2024/02/17/eOgCndyiYcGI1WH.jpg";
+                    var bg = document.documentElement.getAttribute('data-theme');
+                    console.log('bg='+bg);
+                    if(bg === 'light'){
+                        state=state+1;
+                        console.log(state%2);
+                        if(state%2===1){
+                            this.src = "https://s2.loli.net/2024/02/17/eOgCndyiYcGI1WH.jpg";
+                        }else{
+                            this.src = this.dataset.lazySrc;
+                        }
+                        console.log(this.src);
                     }else{
-                        this.src = this.dataset.lazySrc;
+                        this.src = "https://s2.loli.net/2024/02/17/h41rvlyxgLnmcJK.jpg";
                     }
-                    console.log(this.src);
+                        
                 });
+
             </script>
 	      </div>
 		<div class="author-info__name">

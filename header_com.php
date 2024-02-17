@@ -303,12 +303,16 @@
         var headerImg = document.getElementById('page-header');
         //切换深色模式背景图
         headerImg.style.backgroundImage = "url('https://s2.loli.net/2024/02/17/OR25dSatEmWwVkq.jpg')";
+        //切换深色模式头像
+        document.getElementById('img_hover').src="https://s2.loli.net/2024/02/17/h41rvlyxgLnmcJK.jpg";
       }, 
       e.activateLightMode = () => {
         document.documentElement.setAttribute("data-theme", "light"), null !== document.querySelector('meta[name="theme-color"]') && document.querySelector('meta[name="theme-color"]').setAttribute("content", "#ffffff")
         var headerImg = document.getElementById('page-header');
         //切换浅色模式背景图
         headerImg.style.backgroundImage = "url(<?php $this->options->headerimg() ?>)";
+        //切换浅色模式头像
+        document.getElementById('img_hover').src=document.getElementById('img_hover').dataset.lazySrc;
       };
       const t = saveToLocal.get("theme"),
         a = <?php $this->options->darkModeSelect() ?> === 4,
