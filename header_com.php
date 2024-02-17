@@ -300,9 +300,15 @@
       })), 
       e.activateDarkMode = () => {
         document.documentElement.setAttribute("data-theme", "dark"), null !== document.querySelector('meta[name="theme-color"]') && document.querySelector('meta[name="theme-color"]').setAttribute("content", "#0d0d0d")
+        var headerImg = document.getElementById('page-header');
+        //切换深色模式背景图
+        headerImg.style.backgroundImage = "url('https://s2.loli.net/2024/02/17/OR25dSatEmWwVkq.jpg')";
       }, 
       e.activateLightMode = () => {
         document.documentElement.setAttribute("data-theme", "light"), null !== document.querySelector('meta[name="theme-color"]') && document.querySelector('meta[name="theme-color"]').setAttribute("content", "#ffffff")
+        var headerImg = document.getElementById('page-header');
+        //切换浅色模式背景图
+        headerImg.style.backgroundImage = "url(<?php $this->options->headerimg() ?>)";
       };
       const t = saveToLocal.get("theme"),
         a = <?php $this->options->darkModeSelect() ?> === 4,
