@@ -25,15 +25,6 @@ $this->need('page_header.php'); ?>
   box-sizing: border-box;
 }
 
-/* :root {
-  --body-color: #ffffff;
-  --primary-color: #181c1f;
-} */
-
-/* [data-theme="dark"] :root{
-  --body-color: #181c1f;
-  --primary-color: #ffffff;
-} */
 
 body {
   min-height: 100vh;
@@ -61,7 +52,6 @@ body {
   height: 100px;
   background-color: var(--primary-color);
   border-radius: 100px;
-
   /* drop-shadow函数将阴影效果应用于投影图像 */
   /* filter: drop-shadow(0 0 30px var(--primary-color)); */
   filter: drop-shadow(0 0 5px var(--primary-color));
@@ -113,30 +103,6 @@ body {
             <div class="cloud">
             </div>
             <script>
-                // 生成字母和数字数组
-                // function generateText() {
-                // const letters = [];
-                // const numbers = [];
-
-                // const a = "a".charCodeAt(0);
-
-                // for (let i = 0; i < 26; i++) {
-                //     letters.push(String.fromCharCode(a + i));
-                    
-                //     if (i < 9) {
-                //     numbers.push(i + 1);
-                //     }
-                // };
-                // return [...letters, ...numbers];
-                // };
-
-                // // 从生成的数组中随机取出一个字符
-                // function randomText() {
-                // const texts = generateText();
-                // const text = texts[Math.floor(Math.random() * texts.length)];
-                // return text;
-                // };
-
                 var tags = [
                     <?php $this->widget('Widget_Metas_Tag_Cloud', array('sort' => 'count', 'ignoreZeroCount' => true, 'desc' => true, 'limit' => 200))->to($tags); ?>
                     <?php while($tags->next()): ?>
