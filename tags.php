@@ -25,14 +25,19 @@ $this->need('page_header.php'); ?>
   box-sizing: border-box;
 }
 
-:root {
+/* :root {
+  --body-color: #ffffff;
+  --primary-color: #181c1f;
+} */
+
+/* [data-theme="dark"] :root{
   --body-color: #181c1f;
   --primary-color: #ffffff;
-}
+} */
 
 body {
   min-height: 100vh;
-  background-color: var(--body-color);
+  background-color: var(--global-bg);
 }
 
 .container {
@@ -43,6 +48,7 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, .1);
   /* 添加一个从下往上线性渐变的镜像效果，增加视觉层次感 */
   -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, transparent, transparent, #0005);
+  margin-bottom:100px;
 }
 
 .cloud {
@@ -57,7 +63,8 @@ body {
   border-radius: 100px;
 
   /* drop-shadow函数将阴影效果应用于投影图像 */
-  filter: drop-shadow(0 0 30px var(--primary-color));
+  /* filter: drop-shadow(0 0 30px var(--primary-color)); */
+  filter: drop-shadow(0 0 5px var(--primary-color));
 }
 .cloud::before {
   content: "";
@@ -76,14 +83,13 @@ body {
 
 .cloud .raintext {
   position: absolute;
-  top: 40px;
+  top: 80px;
   height: 20px;
   line-height: 20px;
   text-transform: uppercase;
-  color: var(--primary-color);
-  text-shadow: 0 0 5px var(--primary-color), 0 0 15px var(--primary-color), 0 0 30px var(--primary-color);
+  /* text-shadow: 0 0 3px var(--global-bg), 0 0 8px var(--global-bg); */
   transform-origin: bottom;
-  animation: animate 2s linear forwards;
+  animation: animate 4s linear forwards;
 }
 
 @keyframes animate {
@@ -105,41 +111,58 @@ body {
     <div id="page">
         <div class="container">
             <div class="cloud">
-            <!-- <div class="text">a</div>
-            <div class="text">b</div>
-            <div class="text">c</div> -->
-            <!-- 雨滴将会在这里出现 -->
             </div>
             <script>
                 // 生成字母和数字数组
-                function generateText() {
-                const letters = [];
-                const numbers = [];
+                // function generateText() {
+                // const letters = [];
+                // const numbers = [];
 
-                const a = "a".charCodeAt(0);
+                // const a = "a".charCodeAt(0);
 
-                for (let i = 0; i < 26; i++) {
-                    letters.push(String.fromCharCode(a + i));
+                // for (let i = 0; i < 26; i++) {
+                //     letters.push(String.fromCharCode(a + i));
                     
-                    if (i < 9) {
-                    numbers.push(i + 1);
-                    }
-                };
-                return [...letters, ...numbers];
-                };
+                //     if (i < 9) {
+                //     numbers.push(i + 1);
+                //     }
+                // };
+                // return [...letters, ...numbers];
+                // };
 
-                // 从生成的数组中随机取出一个字符
-                function randomText() {
-                const texts = generateText();
-                const text = texts[Math.floor(Math.random() * texts.length)];
-                return text;
-                };
+                // // 从生成的数组中随机取出一个字符
+                // function randomText() {
+                // const texts = generateText();
+                // const text = texts[Math.floor(Math.random() * texts.length)];
+                // return text;
+                // };
+
+                var tags = [
+                    <?php $this->widget('Widget_Metas_Tag_Cloud', array('sort' => 'count', 'ignoreZeroCount' => true, 'desc' => true, 'limit' => 200))->to($tags); ?>
+                    <?php while($tags->next()): ?>
+                        "<?php echo $tags->name(); ?>",
+                    <?php endwhile; ?>
+                ];
+
+                function getRandomColor() {
+                    const r = Math.floor(Math.random() * 256); // 0-255
+                    const g = Math.floor(Math.random() * 256); // 0-255
+                    const b = Math.floor(Math.random() * 256); // 0-255
+                    return `rgb(${r}, ${g}, ${b})`; // 返回rgb颜色字符串
+                }
+
+                function randomTag(){
+                  if (tags.length === 0) return ''; // 确保tags数组不为空
+                  const text = tags[Math.floor(Math.random() * tags.length)];
+                  return text;
+                }
 
                 function rainEffect() {
                 const cloudEle = document.querySelector(".cloud");
                 const textEle = document.createElement("div");
 
-                textEle.innerText = randomText();
+                // textEle.innerText = randomText();
+                textEle.innerText = randomTag();
                 // console.log(textEle.innerText);
                 textEle.classList.add("raintext");
 
@@ -150,6 +173,7 @@ body {
                     left: `${left}px`,
                     fontSize: `${0.5 + size}em`,
                     animationDuration: `${1 + duration}s`,
+                    color: getRandomColor(),
                 };
                 Object.assign(textEle.style, styleSheets);
                 cloudEle.appendChild(textEle);
@@ -160,10 +184,10 @@ body {
                 };
                 
                 // 每隔20ms创建一个雨滴元素
-                setInterval(() => rainEffect(), 20);
+                setInterval(() => rainEffect(), 100);
             </script>
         </div>
-        <div class="tag-cloud-title is-center">标签 - <span class="tag-cloud-amount"><?php echo tagsNum(); ?> </span></div>
+        <!-- <div class="tag-cloud-title is-center">标签 - <span class="tag-cloud-amount"><?php echo tagsNum(); ?> </span></div> -->
         <div class="tag-cloud-list is-center">
             
    <?php $this->widget('Widget_Metas_Tag_Cloud', array('sort' => 'count', 'ignoreZeroCount' => true, 'desc' => true, 'limit' => 2000))->to($tags); ?>  
