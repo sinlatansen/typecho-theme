@@ -79,7 +79,7 @@ body {
   text-transform: uppercase;
   /* text-shadow: 0 0 3px var(--global-bg), 0 0 8px var(--global-bg); */
   transform-origin: bottom;
-  animation: animate 4s linear forwards;
+  animation: animate 6s linear forwards;
 }
 
 @keyframes animate {
@@ -149,8 +149,8 @@ body {
                 }, 2000);
                 };
                 
-                // 每隔20ms创建一个雨滴元素
-                setInterval(() => rainEffect(), 100);
+                // 一定间隔创建一个雨滴元素
+                setInterval(() => rainEffect(), 200);
             </script>
         </div>
         <!-- <div class="tag-cloud-title is-center">标签 - <span class="tag-cloud-amount"><?php echo tagsNum(); ?> </span></div> -->
