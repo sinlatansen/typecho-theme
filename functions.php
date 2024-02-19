@@ -7,56 +7,81 @@ require_once('config/custom_config.php');
 // 新文章缩略图
 function get_ArticleThumbnail($widget)
 {
-    // 当文章无图片时的随机缩略图
-//   $rand = mt_rand(1, 26); // 随机 1-9 张缩略图
-//   // 缩略图加速
-//   $rand_url;
-//   if(!empty(Helper::options()->articleImgSpeed)){
-//     $rand_url = Helper::options()->articleImgSpeed;
-//   }else {
-//     $rand_url = $widget->widget('Widget_Options')->themeUrl . '/images/articles/';
-//   }
-//   $random =  $rand_url . $rand . '.jpg'; // 随机缩略图路径
-//   $random =  'https://static01.imgkr.com/temp/517e5d14c312427dbf93304563869279.png';
-//   $attach = $widget->attachments(1)->attachment;
-    $random = 'https://s2.loli.net/2024/02/03/eN9YRxCr3jQ8dPm.jpg';
+    $category_thumbnails = array(
+        '知识' => 'https://s2.loli.net/2024/02/03/eN9YRxCr3jQ8dPm.jpg',
+        '折腾' => 'https://s2.loli.net/2024/02/19/OrYXvf95xGZUy7w.jpg',
+        '生活' => 'https://s2.loli.net/2024/02/19/WA4ELGHqomSIKdF.png',
+    );
+
     $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i';
 
-    //如果有自定义缩略图
+    // 获取当前文章的第一个分类名称
+    $current_category_name = '';
+    if ($widget->categories) {
+        foreach ($widget->categories as $category) {
+            $current_category_name = $category['name']; // 使用分类的名称作为键
+            break; // 获取第一个分类后即退出循环
+        }
+    }
+
+    // 如果有自定义缩略图
     if ($widget->fields->thumb) {
         return $widget->fields->thumb;
-    } else if (preg_match_all($pattern, $widget->content, $thumbUrl) && strlen($thumbUrl[1][0]) > 7) {
+    }
+    // 如果文章内容中有图片
+    else if (preg_match_all($pattern, $widget->content, $thumbUrl) && strlen($thumbUrl[1][0]) > 7) {
         return $thumbUrl[1][0];
-    } else {
-        return $random;
+    }
+    // 如果能够根据分类找到对应的缩略图
+    if (array_key_exists($current_category_name, $category_thumbnails)) {
+        return $category_thumbnails[$current_category_name];
     }
 }
+
 
 // 主页文章缩略图
 function GetRandomThumbnail($widget)
 {
-    // $random = 'https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg';
-    $random = 'https://s2.loli.net/2024/02/03/eN9YRxCr3jQ8dPm.jpg';
-    if (Helper::options()->futureRandom) {
-        $moszu = explode("\r\n", Helper::options()->futureRandom);
-        $random = $moszu[array_rand($moszu, 1)] . "?futureRandom=" . mt_rand(0, 1000000);
-    }
+    $category_thumbnails = array(
+        '知识' => 'https://s2.loli.net/2024/02/03/eN9YRxCr3jQ8dPm.jpg',
+        '折腾' => 'https://s2.loli.net/2024/02/19/OrYXvf95xGZUy7w.jpg',
+        '生活' => 'https://s2.loli.net/2024/02/19/WA4ELGHqomSIKdF.png',
+    );
+
     $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i';
-    $patternMD = '/\!\[.*?\]\((http(s)?:\/\/.*?(jpg|jpeg|gif|png|webp))/i';
-    $patternMDfoot = '/\[.*?\]:\s*(http(s)?:\/\/.*?(jpg|jpeg|gif|png|webp))/i';
-    $t = preg_match_all($pattern, $widget->content, $thumbUrl);
-    $img = $random;
-    if ($widget->fields->thumb) {
-        $img = $widget->fields->thumb;
-    } elseif ($t) {
-        $img = $thumbUrl[1][0];
-    } elseif (preg_match_all($patternMD, $widget->content, $thumbUrl)) {
-        $img = $thumbUrl[1][0];
-    } elseif (preg_match_all($patternMDfoot, $widget->content, $thumbUrl)) {
-        $img = $thumbUrl[1][0];
+
+    // 获取当前文章的第一个分类名称
+    $current_category_name = '';
+    if ($widget->categories) {
+        foreach ($widget->categories as $category) {
+            $current_category_name = $category['name']; // 使用分类的名称作为键
+            break; // 获取第一个分类后即退出循环
+        }
     }
-    echo $img;
+
+    // 如果有自定义缩略图
+    if ($widget->fields->thumb) {
+        echo $widget->fields->thumb;
+    }
+    // 如果文章内容中有图片
+    else if (preg_match_all($pattern, $widget->content, $thumbUrl) && strlen($thumbUrl[1][0]) > 7) {
+        echo $thumbUrl[1][0];
+    }
+    // 如果能够根据分类找到对应的缩略图
+    else if (array_key_exists($current_category_name, $category_thumbnails)) {
+        echo $category_thumbnails[$current_category_name];
+    }
+    // 如果没有匹配的分类，返回一个全局默认的缩略图
+    else {
+        $random = 'https://s2.loli.net/2024/02/03/eN9YRxCr3jQ8dPm.jpg'; // 默认缩略图
+        if (Helper::options()->futureRandom) {
+            $moszu = explode("\r\n", Helper::options()->futureRandom);
+            $random = $moszu[array_rand($moszu, 1)] . "?futureRandom=" . mt_rand(0, 1000000);
+        }
+        echo $random;
+    }
 }
+
 // 文章封面缩略图
 function GetRandomThumbnailPost($widget)
 {
