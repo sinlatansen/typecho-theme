@@ -2,6 +2,7 @@
 <?php if (!$this->page404()) : ?>
   <footer id="footer">
     <div id="footer-wrap">
+      <a href="https://beian.miit.gov.cn/" target="_blank">鄂ICP备2024037645号</a>
       <div class="copyright">
         <div class="copyright">©<?php echo date('Y'); ?> By <?php $this->author(); ?></div>
         <div class="framework-info">
