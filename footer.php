@@ -2,6 +2,24 @@
 <?php if (!$this->page404()) : ?>
   <footer id="footer">
     <div id="footer-wrap">
+      <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+      <script>
+            const confetti = new JSConfetti();
+            let lastTriggerTime = 0;
+            function showConfetti() {
+                const currentTime = Date.now();
+                // Check if 3 seconds have passed since the last trigger
+                if (currentTime - lastTriggerTime > 2000) {
+                    confetti.addConfetti({
+                      emojis: ['🎅','🏃‍♂️','🤞','🎉','🏀','🀄','🍔','🌀'],
+                      emojiSize: 60,
+                      confettiNumber: 40,
+                    });
+                    lastTriggerTime = currentTime;
+                }
+            }
+            document.getElementById('footer-wrap').onmouseover = showConfetti;
+      </script>
       <a href="https://beian.miit.gov.cn/" target="_blank">鄂ICP备2024037645号</a>
       <div class="copyright">
         <div class="copyright">©<?php echo date('Y'); ?> By <?php $this->author(); ?></div>
