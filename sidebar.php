@@ -31,9 +31,27 @@
                         
                 });
 
+                const glitchText = () => {
+                const elem = document.querySelector('.cyberpunk');
+                let originalText = elem.getAttribute('data-text');
+                let glitchedText = '';
+                for (let i = 0; i < originalText.length; i++) {
+                    if (Math.random() > 0.8) {
+                    const char = originalText[i];
+                    glitchedText += char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase();
+                    } else {
+                    glitchedText += originalText[i];
+                    }
+                }
+                elem.setAttribute('data-text', glitchedText);
+                }
+
+                setInterval(glitchText, 200);
+
+
             </script>
 	      </div>
-		<div class="author-info__name">
+		<div class="author-info__name cyberpunk glitched" data-text="<?php $this->author(); ?>">
 			<?php $this->author(); ?>
 		</div>
 		<div class="author-info__description">

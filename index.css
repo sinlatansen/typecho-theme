@@ -2819,7 +2819,90 @@ h1.page-title+.tag-cloud-list {
   font-size: 1.57em;
 }
 
-#aside-content .card-info .author-info__description {
+[data-theme='dark'] .cyberpunk {
+  position: relative;
+  color: transparent;
+  display: inline-block;
+}
+
+[data-theme='dark'] .cyberpunk::before,
+[data-theme='dark'] .cyberpunk::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  color: #fff;
+  overflow: hidden;
+}
+
+[data-theme='dark'] .cyberpunk::before {
+  text-shadow: -2px 0 blue;
+  animation: glitched 1.4s infinite linear alternate-reverse;
+}
+
+[data-theme='dark'] .cyberpunk::after {
+  left: 2px;
+  text-shadow: -2px 0 red;
+  animation: glitched2 1.4s infinite linear alternate-reverse;
+}
+
+@keyframes glitched {
+  0% {
+    left: -4px;
+    transform: skew(-20deg);
+  }
+
+  11% {
+    left: 2px;
+    transform: skew(0deg);
+  }
+
+  50% {
+    transform: skew(0deg);
+  }
+
+  51% {
+    transform: skew(10deg);
+  }
+
+  60% {
+    transform: skew(0deg);
+  }
+
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+@keyframes glitched2 {
+  0% {
+    left: -2px;
+    transform: skew(-10deg);
+  }
+
+  11% {
+    left: 1px;
+    transform: skew(0deg);
+  }
+
+  50% {
+    transform: skew(0deg);
+  }
+
+  51% {
+    transform: skew(5deg);
+  }
+
+  60% {
+    transform: skew(0deg);
+  }
+
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+
+*/ #aside-content .card-info .author-info__description {
   margin-top: -0.42em;
 }
 
@@ -3627,6 +3710,10 @@ h1.page-title+.tag-cloud-list {
   background-attachment: scroll;
   background-position: bottom;
   background-size: cover;
+}
+
+[data-theme='dark'] #footer {
+  background-color: #000;
 }
 
 #footer:before {
