@@ -23,6 +23,21 @@
                       </div> -->
         <div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div>
         <div class="menus_items">
+            <style>
+                #nav .menus_items .menus_item .menus_item_child li:hover {
+                    background-color: lightskyblue !important;
+                }
+
+                #nav .menus_items .menus_item .menus_item_child li:first-child {
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                }
+
+                #nav .menus_items .menus_item .menus_item_child li:last-child {
+                    border-bottom-right-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                }
+            </style>
             <div class="menus_item">
                 <a class="site-page search-form-input" title="搜索">
                     <i class="fa-fw fas fa-search"></i>
@@ -36,6 +51,7 @@
                     <i class="fas fa-chevron-down"></i>
                 </a>
                 <ul class="menus_item_child">
+
                     <li>
                         <a class="site-page child" href="/archive.html">
                             <i class="fa-fw fas fa-archive"></i>
