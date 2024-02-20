@@ -7,25 +7,25 @@
 <html data-theme="light" class="">
 
 <head>
-<!-- 平滑滚动插件 -->
+  <!-- 平滑滚动插件 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js"></script>
-<!-- 使用自定义设置启用平滑滚动 -->
-<script>
-        SmoothScroll({
-            animationTime: 400,
-            stepSize: 80,
-            pulseScale: 2,
-            pulseAlgorithm: true,
-            pulseNormalize: 1,
-            accelerationDelta: 20,
-            accelerationMax: 1,
-            keyboardSupport: true,
-            arrowScroll: 50,
-            fixedBackground: true
-        });
-</script>
+  <!-- 使用自定义设置启用平滑滚动 -->
+  <script>
+    SmoothScroll({
+      animationTime: 400,
+      stepSize: 80,
+      pulseScale: 2,
+      pulseAlgorithm: true,
+      pulseNormalize: 1,
+      accelerationDelta: 20,
+      accelerationMax: 1,
+      keyboardSupport: true,
+      arrowScroll: 50,
+      fixedBackground: true
+    });
+  </script>
 
-<!-- AI摘要机器人 -->
+  <!-- AI摘要机器人 -->
   <link rel="stylesheet" href="https://cdn1.tianli0.top/gh/zhheo/Post-Abstract-AI@0.15.2/tianli_gpt.css">
   <meta content="always" name="referrer">
   <link rel="icon" type="image/png" href="<?php $this->options->Sitefavicon() ?>">
@@ -266,54 +266,54 @@
   <script>
     (e => {
       e.saveToLocal = {
-        set: (e, t, a) => {
-          if (0 === a) return;
-          const o = {
-            value: t,
-            expiry: Date.now() + 864e5 * a
-          };
-          localStorage.setItem(e, JSON.stringify(o))
+          set: (e, t, a) => {
+            if (0 === a) return;
+            const o = {
+              value: t,
+              expiry: Date.now() + 864e5 * a
+            };
+            localStorage.setItem(e, JSON.stringify(o))
+          },
+          get: e => {
+            const t = localStorage.getItem(e);
+            if (!t) return;
+            const a = JSON.parse(t);
+            if (!(Date.now() > a.expiry)) return a.value;
+            localStorage.removeItem(e)
+          }
         },
-        get: e => {
-          const t = localStorage.getItem(e);
-          if (!t) return;
-          const a = JSON.parse(t);
-          if (!(Date.now() > a.expiry)) return a.value;
-          localStorage.removeItem(e)
-        }
-      }, 
-      e.getScript = (e, t = {}) => new Promise(((a, o) => {
-        const c = document.createElement("script");
-        c.src = e, c.async = !0, c.onerror = o, c.onload = c.onreadystatechange = function() {
-          const e = this.readyState;
-          e && "loaded" !== e && "complete" !== e || (c.onload = c.onreadystatechange = null, a())
-        }, Object.keys(t).forEach((e => {
-          c.setAttribute(e, t[e])
-        })), document.head.appendChild(c)
-      })), 
-      e.getCSS = (e, t = !1) => new Promise(((a, o) => {
-        const c = document.createElement("link");
-        c.rel = "stylesheet", c.href = e, t && (c.id = t), c.onerror = o, c.onload = c.onreadystatechange = function() {
-          const e = this.readyState;
-          e && "loaded" !== e && "complete" !== e || (c.onload = c.onreadystatechange = null, a())
-        }, document.head.appendChild(c)
-      })), 
-      e.activateDarkMode = () => {
-        document.documentElement.setAttribute("data-theme", "dark"), null !== document.querySelector('meta[name="theme-color"]') && document.querySelector('meta[name="theme-color"]').setAttribute("content", "#0d0d0d")
-        var headerImg = document.getElementById('page-header');
-        //切换深色模式背景图
-        headerImg.style.backgroundImage = "url('https://s2.loli.net/2024/02/17/OR25dSatEmWwVkq.jpg')";
-        //切换深色模式头像
-        document.getElementById('img_hover').src="https://s2.loli.net/2024/02/17/h41rvlyxgLnmcJK.jpg";
-      }, 
-      e.activateLightMode = () => {
-        document.documentElement.setAttribute("data-theme", "light"), null !== document.querySelector('meta[name="theme-color"]') && document.querySelector('meta[name="theme-color"]').setAttribute("content", "#ffffff")
-        var headerImg = document.getElementById('page-header');
-        //切换浅色模式背景图
-        headerImg.style.backgroundImage = "url(<?php $this->options->headerimg() ?>)";
-        //切换浅色模式头像
-        document.getElementById('img_hover').src=document.getElementById('img_hover').dataset.lazySrc;
-      };
+        e.getScript = (e, t = {}) => new Promise(((a, o) => {
+          const c = document.createElement("script");
+          c.src = e, c.async = !0, c.onerror = o, c.onload = c.onreadystatechange = function() {
+            const e = this.readyState;
+            e && "loaded" !== e && "complete" !== e || (c.onload = c.onreadystatechange = null, a())
+          }, Object.keys(t).forEach((e => {
+            c.setAttribute(e, t[e])
+          })), document.head.appendChild(c)
+        })),
+        e.getCSS = (e, t = !1) => new Promise(((a, o) => {
+          const c = document.createElement("link");
+          c.rel = "stylesheet", c.href = e, t && (c.id = t), c.onerror = o, c.onload = c.onreadystatechange = function() {
+            const e = this.readyState;
+            e && "loaded" !== e && "complete" !== e || (c.onload = c.onreadystatechange = null, a())
+          }, document.head.appendChild(c)
+        })),
+        e.activateDarkMode = () => {
+          document.documentElement.setAttribute("data-theme", "dark"), null !== document.querySelector('meta[name="theme-color"]') && document.querySelector('meta[name="theme-color"]').setAttribute("content", "#0d0d0d")
+          var headerImg = document.getElementById('page-header');
+          //切换深色模式背景图
+          headerImg.style.backgroundImage = "url('https://s2.loli.net/2024/02/17/OR25dSatEmWwVkq.jpg')";
+          //切换深色模式头像
+          document.getElementById('img_hover').src = "https://s2.loli.net/2024/02/17/h41rvlyxgLnmcJK.jpg";
+        },
+        e.activateLightMode = () => {
+          document.documentElement.setAttribute("data-theme", "light"), null !== document.querySelector('meta[name="theme-color"]') && document.querySelector('meta[name="theme-color"]').setAttribute("content", "#ffffff")
+          var headerImg = document.getElementById('page-header');
+          //切换浅色模式背景图
+          headerImg.style.backgroundImage = "url(<?php $this->options->headerimg() ?>)";
+          //切换浅色模式头像
+          document.getElementById('img_hover').src = document.getElementById('img_hover').dataset.lazySrc;
+        };
       const t = saveToLocal.get("theme"),
         a = <?php $this->options->darkModeSelect() ?> === 4,
         o = <?php $this->options->darkModeSelect() ?> === 1,
@@ -517,12 +517,12 @@
       <hr>
       <div class="menus_items">
         <div class="menus_item">
-            <a class="site-page search search-form-input search-btn">
-                <i class="fas fa-search fa-fw"></i>
-                <form method="post" action="<?php $this->options->siteUrl(); ?>" role="search" id="dSearch" style="display:inline;">
-                    搜索
-                </form>
-            </a>
+          <a class="site-page search search-form-input search-btn">
+            <i class="fas fa-search fa-fw"></i>
+            <form method="post" action="<?php $this->options->siteUrl(); ?>" role="search" id="dSearch" style="display:inline;">
+              搜索
+            </form>
+          </a>
         </div>
         <div class="menus_item">
           <a class="site-page" href="<?php $this->options->siteUrl(); ?>"><i class="fa-fw fas fa-home"></i><span> 首页</span></a>
@@ -566,11 +566,11 @@
     </div>
   </div>
   <!--移动导航栏-->
-<script>
-$(document).ready(function() {
-    $('.search-btn').on('click', function() {
+  <script>
+    $(document).ready(function() {
+      $('.search-btn').on('click', function() {
         $('#sidebar-menus').removeClass('open'); // 假设 'open' 类控制着侧栏的显示
         $('#menu-mask').hide(); // 如果有遮罩层，也需要隐藏
+      });
     });
-});
-</script>
+  </script>

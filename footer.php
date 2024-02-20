@@ -318,13 +318,14 @@
   </script>
 <?php endif ?>
 <!--pjax end-->
-<script>
+<!-- AI摘要机器人 -->
+<!-- <script>
   let tianliGPT_postSelector = '#post #article-container';
   let tianliGPT_wordLimit = 1000;
   // let tianliGPT_postURL = "*/archives/*.html";
   let tianliGPT_key = '3841b0be5627b3d67830';
 </script>
-<script src="https://cdn1.tianli0.top/gh/zhheo/Post-Abstract-AI@0.15.2/tianli_gpt.min.js"></script>
+<script src="https://cdn1.tianli0.top/gh/zhheo/Post-Abstract-AI@0.15.2/tianli_gpt.min.js"></script> -->
 </body>
 
 </html>
