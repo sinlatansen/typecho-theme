@@ -359,6 +359,13 @@
   let tianliGPT_key = '3841b0be5627b3d67830';
 </script>
 <script src="https://cdn1.tianli0.top/gh/zhheo/Post-Abstract-AI@0.15.2/tianli_gpt.min.js"></script> -->
+<!-- AOS动画库 -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    AOS.init();
+    console.log('aos init!');
+  });
+</script>
 </body>
 
 </html>

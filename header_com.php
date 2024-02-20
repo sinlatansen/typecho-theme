@@ -7,6 +7,12 @@
 <html data-theme="light" class="">
 
 <head>
+  <!-- aos动画库 -->
+  <!-- <link rel="stylesheet" href="css/aos.css"> -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- <script src="js/aos.js"></script> -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <!-- 平滑滚动插件 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js"></script>
   <!-- 使用自定义设置启用平滑滚动 -->
