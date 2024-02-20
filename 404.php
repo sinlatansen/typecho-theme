@@ -1,4 +1,4 @@
-<!-- <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?> -->
+<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->page404(); ?>
 <?php $this->need('header_com.php'); ?>
 <div id="web_bg"></div>
