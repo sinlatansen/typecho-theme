@@ -35,6 +35,8 @@ function get_ArticleThumbnail($widget)
     // 如果能够根据分类找到对应的缩略图
     if (array_key_exists($current_category_name, $category_thumbnails)) {
         return $category_thumbnails[$current_category_name];
+    } else {
+        return 'https://s2.loli.net/2024/02/03/E8xtM7KZro4Ufy3.jpg';
     }
 }
 
@@ -73,7 +75,7 @@ function GetRandomThumbnail($widget)
     }
     // 如果没有匹配的分类，返回一个全局默认的缩略图
     else {
-        $random = 'https://s2.loli.net/2024/02/03/eN9YRxCr3jQ8dPm.jpg'; // 默认缩略图
+        $random = 'https://s2.loli.net/2024/02/03/E8xtM7KZro4Ufy3.jpg'; // 默认缩略图
         if (Helper::options()->futureRandom) {
             $moszu = explode("\r\n", Helper::options()->futureRandom);
             $random = $moszu[array_rand($moszu, 1)] . "?futureRandom=" . mt_rand(0, 1000000);
@@ -85,12 +87,46 @@ function GetRandomThumbnail($widget)
 // 文章封面缩略图
 function GetRandomThumbnailPost($widget)
 {
-    $img = 'https://s2.loli.net/2024/02/03/E8xtM7KZro4Ufy3.jpg';
-    if ($widget->fields->thumb) {
-        $img = $widget->fields->thumb;
+    $category_thumbnails = array(
+        '知识' => 'https://s2.loli.net/2024/02/03/eN9YRxCr3jQ8dPm.jpg',
+        '折腾' => 'https://s2.loli.net/2024/02/19/OrYXvf95xGZUy7w.jpg',
+        '生活' => 'https://s2.loli.net/2024/02/19/WA4ELGHqomSIKdF.png',
+    );
+
+    $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i';
+
+    // 获取当前文章的第一个分类名称
+    $current_category_name = '';
+    if ($widget->categories) {
+        foreach ($widget->categories as $category) {
+            $current_category_name = $category['name']; // 使用分类的名称作为键
+            break; // 获取第一个分类后即退出循环
+        }
     }
-    echo $img;
+
+    // 如果有自定义缩略图
+    if ($widget->fields->thumb) {
+        echo $widget->fields->thumb;
+    }
+    // 如果文章内容中有图片
+    else if (preg_match_all($pattern, $widget->content, $thumbUrl) && strlen($thumbUrl[1][0]) > 7) {
+        echo $thumbUrl[1][0];
+    }
+    // 如果能够根据分类找到对应的缩略图
+    else if (array_key_exists($current_category_name, $category_thumbnails)) {
+        echo $category_thumbnails[$current_category_name];
+    }
+    // 如果没有匹配的分类，返回一个全局默认的缩略图
+    else {
+        $random = 'https://s2.loli.net/2024/02/03/E8xtM7KZro4Ufy3.jpg'; // 默认缩略图
+        if (Helper::options()->futureRandom) {
+            $moszu = explode("\r\n", Helper::options()->futureRandom);
+            $random = $moszu[array_rand($moszu, 1)] . "?futureRandom=" . mt_rand(0, 1000000);
+        }
+        echo $random;
+    }
 }
+
 
 // 文章字数统计
 function art_count($cid)
@@ -610,7 +646,8 @@ function getBrowser($agent)
 }
 
 // 获取操作系统信息
-function getOs($agent) {
+function getOs($agent)
+{
     $osData = [
         'Windows Vista' => ['/nt 6.0/i', 'iconfont icon-windows'],
         'Windows 7' => ['/nt 6.1/i', 'iconfont icon-windows'],
@@ -673,7 +710,6 @@ function commentRank($widget, $email = NULL)
         echo '<span class="vtag vmaster">博主</span>';
     } else if (in_array($email, $mailList)) {
         echo '<span class="vtag vauth">' . $all[$email] . '</span>';
-
     } else {
         echo '<span class="vtag vvisitor">访客</span>';
     }
@@ -704,7 +740,6 @@ function get_comment_at($coid)
                 echo '';
             }
         }
-
     } else { //母评论，无需输出锚点链接
         if (@$prow['status'] == "waiting") {
             echo '<p class="commentReview">（评论审核中）)</p>';
@@ -727,17 +762,17 @@ function threadedComments($comments, $options)
         }
     }
     $commentLevelClass = $comments->levels > 0 ? ' comment-child' : ' comment-parent';
-    ?>
+?>
     <li id="li-<?php $comments->theId(); ?>" class="comment-body<?php
-      if ($comments->levels > 0) {
-          echo ' comment-child';
-          $comments->levelsAlt(' comment-level-odd', ' comment-level-even');
-      } else {
-          echo ' comment-parent';
-      }
-      $comments->alt(' comment-odd', ' comment-even');
-      echo $commentClass;
-      ?>">
+                                                                if ($comments->levels > 0) {
+                                                                    echo ' comment-child';
+                                                                    $comments->levelsAlt(' comment-level-odd', ' comment-level-even');
+                                                                } else {
+                                                                    echo ' comment-parent';
+                                                                }
+                                                                $comments->alt(' comment-odd', ' comment-even');
+                                                                echo $commentClass;
+                                                                ?>">
         <div id="<?php $comments->theId(); ?>">
             <div class="comment-author">
                 <?php $email = $comments->mail;
@@ -757,7 +792,7 @@ function threadedComments($comments, $options)
                     <?php echo $parentMail; ?>
                 </b>
                 <a class="vtime" href="<?php $comments->permalink(); ?>"><?php $comments->date('Y-m-d H:i'); ?></a>
-                <?php if (Helper::options()->CloseComments == 'off'): ?>
+                <?php if (Helper::options()->CloseComments == 'off') : ?>
                     <span class="comment-reply">
                         <?php $comments->reply(); ?>
                     </span>
@@ -794,13 +829,13 @@ function img_postthemb($thiz, $default_img)
 //  输出标签  
 function printTag($that)
 { ?>
-    <?php if (count($that->tags) > 0): ?>
-        <?php foreach ($that->tags as $tags): ?>
+    <?php if (count($that->tags) > 0) : ?>
+        <?php foreach ($that->tags as $tags) : ?>
             <a href="<?php print($tags['permalink']) ?>" class="post-meta__tags"><span>
                     <?php print($tags['name']) ?>
                 </span></a>
         <?php endforeach; ?>
-    <?php else: ?>
+    <?php else : ?>
         <a class="post-meta__tags"><span>无标签</span></a>
     <?php endif; ?>
 <?php }
@@ -908,8 +943,7 @@ function thePrevCid($widget, $default = NULL)
     } else {
         return $default;
     }
-}
-;
+};
 
 /**
  * 获取下一篇文章mid
@@ -933,8 +967,7 @@ function theNextCid($widget, $default = NULL)
     } else {
         return $default;
     }
-}
-;
+};
 
 //调用博主最近文章更新时间
 function get_last_update()
@@ -987,7 +1020,6 @@ class editor
         echo "<script src='" . Helper::options()->themeUrl . '/edit/extend.js?v1.7.6' . "'></script>";
         echo "<link rel='stylesheet' href='" . Helper::options()->themeUrl . '/edit/edit.css?v1.6.3' . "'>";
     }
-
 }
 /* 判断是否是移动端 */
 function isMobile()
@@ -1021,7 +1053,6 @@ function RunTime()
         } else {
             echo '1 天';
         }
-
     } else {
         echo '';
     }
@@ -1188,23 +1219,23 @@ function noCover($widget)
     return true;
 }
 
-function cdnBaseUrl(){
+function cdnBaseUrl()
+{
     $StaticFile = Helper::options()->StaticFile;
     $CDNURL = Helper::options()->CDNURL;
-    if($StaticFile == 'CDN' && $CDNURL == ''){
+    if ($StaticFile == 'CDN' && $CDNURL == '') {
         echo 'https://' . Helper::options()->jsdelivrLink . '/gh/wehaox/CDN@main/butterfly';
-    }
-    elseif($StaticFile == 'CDN' && $CDNURL != ''){
+    } elseif ($StaticFile == 'CDN' && $CDNURL != '') {
         echo $CDNURL;
-    }
-    else{
+    } else {
         echo Helper::options()->themeUrl . '/static';
     }
 }
 
-function darkTimeFunc(){
+function darkTimeFunc()
+{
     $time = Helper::options()->darkTime;
-    if(empty($time)){
+    if (empty($time)) {
         $time = "7-20";
     }
     $timeSlot = explode('-', $time);
