@@ -2,7 +2,7 @@
     exit; ?>
 <div class="aside-content" id="aside-content">
     <?php if (!empty($this->options->sidebarBlock) && in_array('ShowAuthorInfo', $this->options->sidebarBlock)) : ?>
-        <div class="card-widget card-info">
+        <div class="card-widget card-info" data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000" data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
             <div class="card-info-avatar is-center">
                 <div class="avatar-img">
                     <img id="img_hover" data-lazy-src="<?php $this->options->logoUrl() ?>" onerror="this.onerror=null;this.src='/usr/themes/butterfly/img/friend_404.gif'" src="<?php echo GetLazyLoad() ?>" alt="avatar">
@@ -267,7 +267,7 @@
             </div>
         <?php endif; ?>
         <?php if (!empty($this->options->sidebarBlock) && in_array('ShowCategory', $this->options->sidebarBlock)) : ?>
-            <div class="card-widget card-categories">
+            <div class="card-widget card-categories" data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000" data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
                 <div class="item-headline"><i class="fas fa-folder-open"></i><span>
                         <?php _e('分类'); ?>
                     </span>
@@ -285,7 +285,7 @@
         <?php endif; ?>
         <!-- 标签 -->
         <?php if (!empty($this->options->sidebarBlock) && in_array('ShowTag', $this->options->sidebarBlock)) : ?>
-            <div class="card-widget card-tags">
+            <div class="card-widget card-tags" data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000" data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
                 <div class="item-headline"><i class="fas fa-tags"></i><span>
                         <?php _e('标签'); ?>
                     </span></div>
@@ -306,7 +306,7 @@
             </div>
         <?php endif; ?>
         <?php if (!empty($this->options->sidebarBlock) && in_array('ShowArchive', $this->options->sidebarBlock)) : ?>
-            <div class="card-widget card-archives">
+            <div class="card-widget card-archives" data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000" data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
                 <div class="item-headline">
                     <i class="fas fa-archive"></i><span>
                         <?php _e('归档'); ?>
@@ -335,8 +335,8 @@
         <?php if (!empty($this->options->sidebarBlock) && in_array('ShowWebinfo', $this->options->sidebarBlock)) : ?>
             <div class="card-widget card-webinfo">
                 <div class="item-headline">
-                    <i class="fas fa-chart-line"></i>
-                    <span>网站资讯</span>
+                    <i class="fas fa-chart-line" data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000" data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true"></i>
+                    <span>网站统计</span>
                 </div>
                 <div class="webinfo">
                     <div class="webinfo-item">
