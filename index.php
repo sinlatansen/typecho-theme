@@ -74,7 +74,7 @@ if ($sticky && $this->is('index') || $this->is('front')) {
                 $i++;
             endif;
             ?>
-            <div class="recent-post-item" data-aos="zoom-in-up">
+            <div class="recent-post-item" data-aos="zoom-in-up" data-aos-easing="ease-out" data-aos-duration="4000" data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
                 <?php if (noCover($this)) : ?>
                     <wehao class="post_cover">
                         <a href="<?php $this->permalink() ?>">
