@@ -7,6 +7,20 @@
 <html data-theme="light" class="">
 
 <head>
+  <!-- umami跟踪代码 -->
+  <!-- <script async src="http://umami.lzyyyyyy.fun/script.js" data-website-id="7aa963db-7032-4a0e-a823-bbda16a88221"></script> -->
+  <script>
+    // 检查 localStorage 是否有 disableUmami 设置为 true
+    if (!localStorage.getItem('disableUmami')) {
+      // 如果没有禁用 Umami，动态加载跟踪脚本
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = "http://umami.lzyyyyyy.fun/script.js";
+      script.setAttribute("data-website-id", "7aa963db-7032-4a0e-a823-bbda16a88221");
+      document.head.appendChild(script);
+    }
+  </script>
+
   <!-- aos动画库 -->
   <!-- <link rel="stylesheet" href="css/aos.css"> -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
