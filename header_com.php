@@ -10,7 +10,7 @@
 <head>
   <!-- typed.js -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  
+
   <!-- umami跟踪代码 -->
   <!-- 1.直接跟踪 -->
   <!-- <script async src="http://umami.lzyyyyyy.fun/script.js" data-website-id="7aa963db-7032-4a0e-a823-bbda16a88221"></script> -->
@@ -83,7 +83,10 @@
         'search' => _t('包含关键字 %s 的文章'),
         'tag' => _t('标签 %s 下的文章'),
         'author' => _t('%s 发布的文章')
-      ), '', ' - '); ?>
+      ),
+      '',
+      ' - '
+    ); ?>
     <?php $this->options->title(); ?>
   </title>
   <!-- 使用url函数转换相关路径 -->
@@ -353,7 +356,7 @@
           })),
           e.activateDarkMode = () => {
             document.documentElement.setAttribute("data-theme", "dark"), null !== document.querySelector('meta[name="theme-color"]') && document.querySelector('meta[name="theme-color"]').setAttribute("content", "#0d0d0d")
-            var headerImg = document.getElementById('page-header');
+            var headerImg = document.getElementById('#page-header.full-page');
             //切换深色模式背景图
             headerImg.style.backgroundImage = "url('https://s2.loli.net/2024/02/17/OR25dSatEmWwVkq.jpg')";
             //切换深色模式头像
@@ -361,7 +364,7 @@
           },
           e.activateLightMode = () => {
             document.documentElement.setAttribute("data-theme", "light"), null !== document.querySelector('meta[name="theme-color"]') && document.querySelector('meta[name="theme-color"]').setAttribute("content", "#ffffff")
-            var headerImg = document.getElementById('page-header');
+            var headerImg = document.getElementById('#page-header.full-page');
             //切换浅色模式背景图
             headerImg.style.backgroundImage = "url(<?php $this->options->headerimg() ?>)";
             //切换浅色模式头像
@@ -388,7 +391,7 @@
         /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent) && document.documentElement.classList.add("apple")
       })(window)
   </script>
- 
+
   <!--额外的-->
 
   <?php if ($this->options->EnableCustomColor === 'true'): ?>
