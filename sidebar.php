@@ -352,15 +352,68 @@
                     <span>网站统计</span>
                 </div>
                 <div class="webinfo">
+                    
+                    <div class="webinfo-item">
+                        <div class="item-name">当前在线用户数 :</div>
+                        <div class="item-count" id="activeUsersCount">加载中...</div>
+                    </div>
+
+                    <script>
+                    setTimeout(function() {
+                        document.getElementById('activeUsersCount').textContent = '<?php
+                            // Umami API 的基本信息
+                            $loginUrl = 'http://umami.lzyyyyyy.fun/api/auth/login'; // 登录端点
+                            $activeUsersUrl = 'http://umami.lzyyyyyy.fun/api/websites/7aa963db-7032-4a0e-a823-bbda16a88221/active'; // 获取在线用户数的端点
+                            $username = 'admin'; // Umami 用户名
+                            $password = 'lzy20010414'; // Umami 密码
+
+                            // 使用 cURL 获取授权令牌
+                            $ch = curl_init();
+                            curl_setopt($ch, CURLOPT_URL, $loginUrl);
+                            curl_setopt($ch, CURLOPT_POST, true);
+                            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array('username' => $username, 'password' => $password)));
+                            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+
+                            $response = curl_exec($ch);
+                            $token = '';
+                            if (!curl_errno($ch)) {
+                                $authResponse = json_decode($response, true);
+                                if (isset($authResponse['token'])) {
+                                    $token = $authResponse['token'];
+                                }
+                            }
+                            curl_close($ch);
+
+                            if ($token) {
+                                // 使用授权令牌获取当前在线用户数
+                                $ch = curl_init();
+                                curl_setopt($ch, CURLOPT_URL, $activeUsersUrl);
+                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer ' . $token));
+
+                                $response = curl_exec($ch);
+                                if (!curl_errno($ch)) {
+                                    $activeUsers = json_decode($response, true);
+                                    if (isset($activeUsers[0]['x'])) {
+                                        echo $activeUsers[0]['x'];
+                                    } else {
+                                        echo "无法获取";
+                                    }
+                                } else {
+                                    echo "请求错误";
+                                }
+                                curl_close($ch);
+                            } else {
+                                echo "无法获取授权令牌";
+                            }
+                        ?>';
+                    }, 3000); // 延迟 3 秒
+                    </script>
+
                     <div class="webinfo-item">
                         <?php
-                        // Umami API 的基本信息
-                        $loginUrl = 'http://umami.lzyyyyyy.fun/api/auth/login'; // 登录端点
-                        $activeUsersUrl = 'http://umami.lzyyyyyy.fun/api/websites/7aa963db-7032-4a0e-a823-bbda16a88221/active'; // 获取在线用户数的端点
                         $statsUrl = 'http://umami.lzyyyyyy.fun/api/websites/7aa963db-7032-4a0e-a823-bbda16a88221/stats'; // 获取网站统计数据的端点
-                        $username = 'admin'; // Umami 用户名
-                        $password = 'lzy20010414'; // Umami 密码
-                    
                         // 设置时间范围：从2024年2月20日到现在
                         $startAt = strtotime('2024-02-20') * 1000; // 转换为毫秒
                         $endAt = time() * 1000; // 当前时间，转换为毫秒
@@ -368,64 +421,6 @@
                         // 格式化统计 URL 以包含时间范围
                         // 构造包含时间范围的统计 URL
                         $statsUrl = "http://umami.lzyyyyyy.fun/api/websites/7aa963db-7032-4a0e-a823-bbda16a88221/stats?startAt={$startAt}&endAt={$endAt}";
-
-                        // 使用 cURL 获取授权令牌
-                        $ch = curl_init();
-                        curl_setopt($ch, CURLOPT_URL, $loginUrl);
-                        curl_setopt($ch, CURLOPT_POST, true);
-                        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array('username' => $username, 'password' => $password)));
-                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-
-                        $response = curl_exec($ch);
-                        if (curl_errno($ch)) {
-                            echo '登录请求错误：' . curl_error($ch);
-                            curl_close($ch);
-                            exit;
-                        }
-
-                        // 解码 JSON 响应以获取令牌
-                        $authResponse = json_decode($response, true);
-                        if (!isset($authResponse['token'])) {
-                            echo '无法获取授权令牌';
-                            curl_close($ch);
-                            exit;
-                        }
-                        $token = $authResponse['token'];
-                        curl_close($ch);
-
-                        // 使用授权令牌获取当前在线用户数
-                        $ch = curl_init();
-                        curl_setopt($ch, CURLOPT_URL, $activeUsersUrl);
-                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer ' . $token));
-
-                        $response = curl_exec($ch);
-                        if (curl_errno($ch)) {
-                            echo '获取在线用户数请求错误：' . curl_error($ch);
-                            curl_close($ch);
-                            exit;
-                        }
-                        curl_close($ch);
-
-                        // 展示在线用户数
-                        $activeUsers = json_decode($response, true);
-                        ?>
-
-                        <div class="item-name">当前在线用户数 :</div>
-                        <div class="item-count">
-                            <?php
-                            if (isset($activeUsers[0]['x'])) {
-                                echo $activeUsers[0]['x'];
-                            } else {
-                                // 如果响应中没有 'x' 键，可以输出一个错误消息或者一个默认值
-                                echo "无法获取";
-                            }
-                            ?>
-                        </div>
-                    </div>
-                    <div class="webinfo-item">
-                        <?php
                         // 使用授权令牌获取网站统计数据
                         $ch = curl_init();
                         curl_setopt($ch, CURLOPT_URL, $statsUrl);
