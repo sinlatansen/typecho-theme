@@ -2,14 +2,54 @@
   exit; ?>
 <div class="aside-content" id="aside-content" role="complementary">
   <?php if (!empty($this->options->PostSidebarBlock) && in_array('ShowAuthorInfo', $this->options->PostSidebarBlock)): ?>
-    <div class="card-widget card-info">
+    <div class="card-widget card-info"  data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000"
+            data-aos-delay="500" data-aos-offset="400" data-aos-mirror="true">
       <div class="card-info-avatar is-center">
         <div class="avatar-img">
-          <img data-lazy-src="<?php $this->options->logoUrl() ?>"
-            onerror="this.onerror=null;this.src='/usr/themes/butterfly/img/friend_404.gif'"
-            src="<?php echo GetLazyLoad() ?>" alt="avatar">
+                    <img id="img_hover" data-lazy-src="<?php $this->options->logoUrl() ?>"
+            onerror="this.onerror=null;this.src='/usr/themes/butterfly/img/friend_404.gif'" src="<?php echo GetLazyLoad() ?>"
+            alt="avatar">
+          <script>
+            var image = document.getElementById('img_hover');
+
+            var state = 0;
+            image.addEventListener('mouseover', function () {
+              var bg = document.documentElement.getAttribute('data-theme');
+              console.log('bg=' + bg);
+              if (bg === 'light') {
+                state = state + 1;
+                console.log(state % 2);
+                if (state % 2 === 1) {
+                  this.src = "https://s2.loli.net/2024/02/17/eOgCndyiYcGI1WH.jpg";
+                } else {
+                  this.src = this.dataset.lazySrc;
+                }
+                console.log(this.src);
+              } else {
+                this.src = "https://s2.loli.net/2024/02/17/h41rvlyxgLnmcJK.jpg";
+              }
+
+            });
+
+            const glitchText = () => {
+              const elem = document.querySelector('.cyberpunk');
+              let originalText = elem.getAttribute('data-text');
+              let glitchedText = '';
+              for (let i = 0; i < originalText.length; i++) {
+                if (Math.random() > 0.8) {
+                  const char = originalText[i];
+                  glitchedText += char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase();
+                } else {
+                  glitchedText += originalText[i];
+                }
+              }
+              elem.setAttribute('data-text', glitchedText);
+            }
+
+            setInterval(glitchText, 200);
+          </script>
         </div>
-        <div class="author-info__name">
+        <div class="author-info__name cyberpunk glitched" data-text="<?php $this->author(); ?>">
           <?php $this->author(); ?>
         </div>
         <div class="author-info__description">
@@ -76,7 +116,8 @@
     </div>
   <?php endif; ?>
   <div class="sticky_layout">
-    <div class="card-widget" id="card-toc">
+    <div class="card-widget" id="card-toc"  data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000"
+            data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
       <div class="item-headline">
         <i class="fas fa-stream"></i>
         <span>目录</span>
@@ -185,7 +226,8 @@
     <?php endif ?>
     <!--微博热搜end-->
     <?php if (!empty($this->options->PostSidebarBlock) && in_array('ShowRecentPosts', $this->options->PostSidebarBlock)): ?>
-      <div class="card-widget card-recent-post">
+      <div class="card-widget card-recent-post"  data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000"
+            data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
         <div class="item-headline">
           <i class="fas fa-history"></i><span>
             <?php _e('最新文章'); ?>
@@ -215,7 +257,8 @@
       </div>
     <?php endif; ?>
     <?php if (!empty($this->options->PostSidebarBlock) && in_array('ShowWebinfo', $this->options->PostSidebarBlock)): ?>
-      <div class="card-widget card-webinfo">
+      <div class="card-widget card-webinfo"  data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000"
+            data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
         <div class="item-headline">
           <i class="fas fa-chart-line"></i>
           <span>网站资讯</span>
