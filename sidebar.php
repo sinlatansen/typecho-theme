@@ -1,16 +1,19 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__'))
     exit; ?>
 <div class="aside-content" id="aside-content">
-    <?php if (!empty($this->options->sidebarBlock) && in_array('ShowAuthorInfo', $this->options->sidebarBlock)) : ?>
-        <div class="card-widget card-info" data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000" data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
+    <?php if (!empty($this->options->sidebarBlock) && in_array('ShowAuthorInfo', $this->options->sidebarBlock)): ?>
+        <div class="card-widget card-info" data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000"
+            data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
             <div class="card-info-avatar is-center">
                 <div class="avatar-img">
-                    <img id="img_hover" data-lazy-src="<?php $this->options->logoUrl() ?>" onerror="this.onerror=null;this.src='/usr/themes/butterfly/img/friend_404.gif'" src="<?php echo GetLazyLoad() ?>" alt="avatar">
+                    <img id="img_hover" data-lazy-src="<?php $this->options->logoUrl() ?>"
+                        onerror="this.onerror=null;this.src='/usr/themes/butterfly/img/friend_404.gif'"
+                        src="<?php echo GetLazyLoad() ?>" alt="avatar">
                     <script>
                         var image = document.getElementById('img_hover');
 
                         var state = 0;
-                        image.addEventListener('mouseover', function() {
+                        image.addEventListener('mouseover', function () {
                             var bg = document.documentElement.getAttribute('data-theme');
                             console.log('bg=' + bg);
                             if (bg === 'light') {
@@ -88,15 +91,15 @@
                 </span>
             </a> -->
 
-            <?php if ($this->options->author_bottom != null) : ?>
+            <?php if ($this->options->author_bottom != null): ?>
                 <div class="card-info-social-icons is-center">
                     <?php $this->options->author_bottom() ?>
                 </div>
-            <?php elseif (!$this->options->author_bottom) : ?>
+            <?php elseif (!$this->options->author_bottom): ?>
             <?php endif; ?>
         </div>
     <?php endif; ?>
-    <?php if (!empty($this->options->sidebarBlock) && in_array('ShowAnnounce', $this->options->sidebarBlock)) : ?>
+    <?php if (!empty($this->options->sidebarBlock) && in_array('ShowAnnounce', $this->options->sidebarBlock)): ?>
         <!-- <div class="card-widget card-announcement">
             <div class="item-headline">
                 <i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span>
@@ -106,7 +109,7 @@
             </div>
         </div> -->
     <?php endif; ?>
-    <?php if (!empty($this->options->AD)) : ?>
+    <?php if (!empty($this->options->AD)): ?>
         <div class="card-widget">
             <div class="item-headline"><i class="fa-solid fa-rectangle-ad"></i><span>广告</span></div>
             <div>
@@ -116,8 +119,10 @@
     <?php endif; ?>
     <div class="sticky_layout">
         <!--微博热搜-->
-        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowWeiboHot', $this->options->sidebarBlock)) : ?>
-            <div class="card-widget card-weibo wow animate__zoomIn" data-wow-duration="2s" data-wow-delay="200ms" data-wow-offset="30" data-wow-iteration="1" style="visibility: visible; animation-duration: 2s; animation-delay: 200ms; animation-iteration-count: 1; animation-name: zoomIn;">
+        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowWeiboHot', $this->options->sidebarBlock)): ?>
+            <div class="card-widget card-weibo wow animate__zoomIn" data-wow-duration="2s" data-wow-delay="200ms"
+                data-wow-offset="30" data-wow-iteration="1"
+                style="visibility: visible; animation-duration: 2s; animation-delay: 200ms; animation-iteration-count: 1; animation-name: zoomIn;">
                 <div class="card-content">
                     <div class="item-headline">
                         <i class="fab fa-weibo"></i>
@@ -209,7 +214,7 @@
             </div>
         <?php endif ?>
         <!--微博热搜end-->
-        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowRecentPosts', $this->options->sidebarBlock)) : ?>
+        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowRecentPosts', $this->options->sidebarBlock)): ?>
             <div class="card-widget card-recent-post">
                 <div class="item-headline">
                     <i class="fas fa-history"></i><span>
@@ -218,10 +223,12 @@
                 </div>
                 <div class="aside-list">
                     <?php $this->widget('Widget_Contents_Post_Recent')->to($contents); ?>
-                    <?php while ($contents->next()) : ?>
+                    <?php while ($contents->next()): ?>
                         <div class="aside-list-item">
                             <a class="thumbnail" href="<?php $contents->permalink() ?>" title="<?php $contents->title() ?>">
-                                <img onerror="this.onerror=null;this.src='<?php $this->options->themeUrl('img/404.jpg'); ?>'" data-lazy-src="<?php GetRandomThumbnail($contents); ?> " src="<?php echo GetLazyLoad() ?>" alt="<?php $contents->title() ?>">
+                                <img onerror="this.onerror=null;this.src='<?php $this->options->themeUrl('img/404.jpg'); ?>'"
+                                    data-lazy-src="<?php GetRandomThumbnail($contents); ?> " src="<?php echo GetLazyLoad() ?>"
+                                    alt="<?php $contents->title() ?>">
                             </a>
                             <div class="content">
                                 <a class="title" href="<?php $contents->permalink() ?>">
@@ -236,14 +243,14 @@
                 </div>
             </div>
         <?php endif; ?>
-        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowRecentComments', $this->options->sidebarBlock)) : ?>
+        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowRecentComments', $this->options->sidebarBlock)): ?>
             <div class="card-widget" id="card-newest-comments">
                 <div class="item-headline"><i class="fas fa-bolt"></i><span>
                         <?php _e('最新评论'); ?>
                     </span></div>
                 <div class="aside-list">
                     <?php $this->widget('Widget_Comments_Recent', 'pageSize=6')->to($comments); ?>
-                    <?php while ($comments->next()) : ?>
+                    <?php while ($comments->next()): ?>
                         <div class="aside-list-item">
                             <a href="<?php $comments->permalink(); ?>" class="thumbnail">
                                 <?php $email = $comments->mail;
@@ -266,8 +273,9 @@
                 </div>
             </div>
         <?php endif; ?>
-        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowCategory', $this->options->sidebarBlock)) : ?>
-            <div class="card-widget card-categories" data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000" data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
+        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowCategory', $this->options->sidebarBlock)): ?>
+            <div class="card-widget card-categories" data-aos="fade-left" data-aos-easing="ease-out"
+                data-aos-duration="4000" data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
                 <div class="item-headline"><i class="fas fa-folder-open"></i><span>
                         <?php _e('分类'); ?>
                     </span>
@@ -284,29 +292,33 @@
             </div>
         <?php endif; ?>
         <!-- 标签 -->
-        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowTag', $this->options->sidebarBlock)) : ?>
-            <div class="card-widget card-tags" data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000" data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
+        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowTag', $this->options->sidebarBlock)): ?>
+            <div class="card-widget card-tags" data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000"
+                data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
                 <div class="item-headline"><i class="fas fa-tags"></i><span>
                         <?php _e('标签'); ?>
                     </span></div>
 
                 <div class="card-tag-cloud">
                     <?php $this->widget('Widget_Metas_Tag_Cloud', array('sort' => 'count', 'ignoreZeroCount' => true, 'desc' => true, 'limit' => 20))->to($tags); ?>
-                    <?php while ($tags->next()) : ?>
+                    <?php while ($tags->next()): ?>
                         <a <?php if (
-                                !empty($this->options->beautifyBlock) && in_array(
-                                    'ShowColorTags',
-                                    $this->options->beautifyBlock
-                                )
-                            ) : ?> style="color: rgb(<?php echo (rand(0, 255)); ?>, <?php echo (rand(0, 255)); ?>, <?php echo (rand(0, 255)); ?>)" <?php endif; ?> rel="tag" href="<?php $tags->permalink(); ?>" title="<?php $tags->name(); ?>" style='display: inline-block; margin: 0 5px 5px 0;'>
+                            !empty($this->options->beautifyBlock) && in_array(
+                                'ShowColorTags',
+                                $this->options->beautifyBlock
+                            )
+                        ): ?> style="color: rgb(<?php echo (rand(0, 255)); ?>, <?php echo (rand(0, 255)); ?>, <?php echo (rand(0, 255)); ?>)"
+                            <?php endif; ?> rel="tag" href="<?php $tags->permalink(); ?>" title="<?php $tags->name(); ?>"
+                            style='display: inline-block; margin: 0 5px 5px 0;'>
                             <?php $tags->name(); ?>
                         </a>
                     <?php endwhile; ?>
                 </div>
             </div>
         <?php endif; ?>
-        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowArchive', $this->options->sidebarBlock)) : ?>
-            <div class="card-widget card-archives" data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000" data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
+        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowArchive', $this->options->sidebarBlock)): ?>
+            <div class="card-widget card-archives" data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000"
+                data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
                 <div class="item-headline">
                     <i class="fas fa-archive"></i><span>
                         <?php _e('归档'); ?>
@@ -320,7 +332,7 @@
                     if (!empty($this->options->sidderArchiveNum)) {
                         $num = $this->options->sidderArchiveNum;
                     }
-                    while ($recent->next() && $x < $num) :
+                    while ($recent->next() && $x < $num):
                         echo '<li class="card-archive-list-item">
             <a class="card-archive-list-link" href="' . $recent->permalink . '">
             <span class="card-archive-list-date">' . $recent->date . '</span>
@@ -332,13 +344,77 @@
                 </ul>
             </div>
         <?php endif; ?>
-        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowWebinfo', $this->options->sidebarBlock)) : ?>
-            <div class="card-widget card-webinfo" data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000" data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
+        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowWebinfo', $this->options->sidebarBlock)): ?>
+            <div class="card-widget card-webinfo" data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000"
+                data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
                 <div class="item-headline">
                     <i class="fas fa-chart-line"></i>
                     <span>网站统计</span>
                 </div>
                 <div class="webinfo">
+                    <div class="webinfo-item">
+                        <?php
+                        // Umami API 的基本信息
+                        $loginUrl = 'http://umami.lzyyyyyy.fun/api/auth/login'; // 登录端点
+                        $activeUsersUrl = 'http://umami.lzyyyyyy.fun/api/websites/7aa963db-7032-4a0e-a823-bbda16a88221/active'; // 获取在线用户数的端点
+                        $username = 'admin'; // Umami 用户名
+                        $password = 'lzy20010414'; // Umami 密码
+                    
+                        // 使用 cURL 获取授权令牌
+                        $ch = curl_init();
+                        curl_setopt($ch, CURLOPT_URL, $loginUrl);
+                        curl_setopt($ch, CURLOPT_POST, true);
+                        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array('username' => $username, 'password' => $password)));
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+
+                        $response = curl_exec($ch);
+                        if (curl_errno($ch)) {
+                            echo '登录请求错误：' . curl_error($ch);
+                            curl_close($ch);
+                            exit;
+                        }
+
+                        // 解码 JSON 响应以获取令牌
+                        $authResponse = json_decode($response, true);
+                        if (!isset($authResponse['token'])) {
+                            echo '无法获取授权令牌';
+                            curl_close($ch);
+                            exit;
+                        }
+                        $token = $authResponse['token'];
+                        curl_close($ch);
+
+                        // 使用授权令牌获取当前在线用户数
+                        $ch = curl_init();
+                        curl_setopt($ch, CURLOPT_URL, $activeUsersUrl);
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer ' . $token));
+
+                        $response = curl_exec($ch);
+                        if (curl_errno($ch)) {
+                            echo '获取在线用户数请求错误：' . curl_error($ch);
+                            curl_close($ch);
+                            exit;
+                        }
+                        curl_close($ch);
+
+                        // 展示在线用户数
+                        $activeUsers = json_decode($response, true);
+                        ?>
+
+                        <div class="item-name">当前在线用户数 :</div>
+                        <div class="item-count">
+                            <?php
+                            if (isset($activeUsers[0]['x'])) {
+                                echo $activeUsers[0]['x'];
+                            } else {
+                                // 如果响应中没有 'x' 键，可以输出一个错误消息或者一个默认值
+                                echo "无法获取";
+                            }
+                            ?>
+                        </div>
+                    </div>
                     <div class="webinfo-item">
                         <div class="item-name">文章数目 :</div>
                         <div class="item-count">
@@ -358,11 +434,10 @@
                             <?php allOfCharacters(); ?>
                         </div>
                     </div>
-                    <?php if ($this->options->ShowOnlinePeople == 'on') : ?>
+                    <?php if ($this->options->ShowOnlinePeople == 'on'): ?>
                         <div class="webinfo-item">
                             <div class="item-name">当前在线人数 :</div>
                             <div class="item-count">
-                                <?php onlinePeople(); ?>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -381,7 +456,7 @@
                 </div>
             </div>
         <?php endif; ?>
-        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowOther', $this->options->sidebarBlock)) : ?>
+        <?php if (!empty($this->options->sidebarBlock) && in_array('ShowOther', $this->options->sidebarBlock)): ?>
             <div class="card-widget card-ty-user">
                 <div class="item-headline">
                     <i class="fas fa-user"></i><span>
@@ -389,7 +464,7 @@
                     </span>
                 </div>
                 <div class="widget-list">
-                    <?php if ($this->user->hasLogin()) : ?>
+                    <?php if ($this->user->hasLogin()): ?>
                         <div class="last"><a href="<?php $this->options->adminUrl(); ?>">
                                 <?php _e('进入后台'); ?> (
                                 <?php $this->user->screenName(); ?>)
@@ -397,7 +472,7 @@
                         <div class="last"><a href="<?php $this->options->logoutUrl(); ?>">
                                 <?php _e('退出'); ?>
                             </a></div>
-                    <?php else : ?>
+                    <?php else: ?>
                         <div class="last"><a href="<?php $this->options->adminUrl('login.php'); ?>">
                                 <?php _e('登录'); ?>
                             </a></div>
