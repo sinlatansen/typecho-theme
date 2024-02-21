@@ -1043,20 +1043,31 @@ function isMobile()
 }
 function RunTime()
 {
-    $site_create_time = strtotime(Helper::options()->buildtime);
-    $time = time() - $site_create_time;
+    $site_create_time = strtotime(Helper::options()->buildtime); // 获取网站创建时间
+    $time = time() - $site_create_time; // 计算总运行时间（秒）
+
     if (is_numeric($time)) {
-        if ($time >= 86400) {
-            $days = floor($time / 86400);
-            $time = ($time % 86400);
-            echo $days . ' 天';
-        } else {
-            echo '1 天';
-        }
+        // 计算天数
+        $days = floor($time / 86400);
+        $time = $time % 86400; // 剩余时间
+
+        // 计算小时数
+        $hours = floor($time / 3600);
+        $time = $time % 3600; // 剩余时间
+
+        // 计算分钟数
+        $minutes = floor($time / 60);
+
+        // 剩余的时间就是秒数
+        $seconds = $time % 60;
+
+        // 格式化输出
+        echo $days . ' 天 ' . $hours . ' 小时 ' . $minutes . ' 分钟 ' . $seconds . ' 秒';
     } else {
         echo '';
     }
 }
+
 function RecapOutPut($login)
 {
     $siteKey = Helper::options()->siteKey;

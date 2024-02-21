@@ -333,9 +333,9 @@
             </div>
         <?php endif; ?>
         <?php if (!empty($this->options->sidebarBlock) && in_array('ShowWebinfo', $this->options->sidebarBlock)) : ?>
-            <div class="card-widget card-webinfo">
+            <div class="card-widget card-webinfo" data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000" data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true">
                 <div class="item-headline">
-                    <i class="fas fa-chart-line" data-aos="fade-left" data-aos-easing="ease-out" data-aos-duration="4000" data-aos-delay="500" data-aos-offset="200" data-aos-mirror="true"></i>
+                    <i class="fas fa-chart-line"></i>
                     <span>网站统计</span>
                 </div>
                 <div class="webinfo">
@@ -346,12 +346,12 @@
                             <?php $stat->publishedPostsNum() ?>
                         </div>
                     </div>
-                    <div class="webinfo-item">
+                    <!-- <div class="webinfo-item">
                         <div class="item-name">已运行时间 :</div>
                         <div class="item-count" id="runtimeshows" data-publishdate="">
                             <?php echo RunTime() ?>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="webinfo-item">
                         <div class="item-name">本站总字数 :</div>
                         <div class="item-count">
