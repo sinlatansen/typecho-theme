@@ -357,9 +357,18 @@
                         // Umami API 的基本信息
                         $loginUrl = 'http://umami.lzyyyyyy.fun/api/auth/login'; // 登录端点
                         $activeUsersUrl = 'http://umami.lzyyyyyy.fun/api/websites/7aa963db-7032-4a0e-a823-bbda16a88221/active'; // 获取在线用户数的端点
+                        $statsUrl = 'http://umami.lzyyyyyy.fun/api/websites/7aa963db-7032-4a0e-a823-bbda16a88221/stats'; // 获取网站统计数据的端点
                         $username = 'admin'; // Umami 用户名
                         $password = 'lzy20010414'; // Umami 密码
                     
+                        // 设置时间范围：从2024年2月20日到现在
+                        $startAt = strtotime('2024-02-20') * 1000; // 转换为毫秒
+                        $endAt = time() * 1000; // 当前时间，转换为毫秒
+                    
+                        // 格式化统计 URL 以包含时间范围
+                        // 构造包含时间范围的统计 URL
+                        $statsUrl = "http://umami.lzyyyyyy.fun/api/websites/7aa963db-7032-4a0e-a823-bbda16a88221/stats?startAt={$startAt}&endAt={$endAt}";
+
                         // 使用 cURL 获取授权令牌
                         $ch = curl_init();
                         curl_setopt($ch, CURLOPT_URL, $loginUrl);
@@ -416,6 +425,39 @@
                         </div>
                     </div>
                     <div class="webinfo-item">
+                        <?php
+                        // 使用授权令牌获取网站统计数据
+                        $ch = curl_init();
+                        curl_setopt($ch, CURLOPT_URL, $statsUrl);
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer ' . $token));
+
+                        $response = curl_exec($ch);
+                        if (curl_errno($ch)) {
+                            echo '获取统计数据请求错误：' . curl_error($ch);
+                            curl_close($ch);
+                            exit;
+                        }
+                        curl_close($ch);
+
+                        // 解析统计数据以获取总访问量
+                        $statsData = json_decode($response, true);
+                        // echo $response;
+                    
+                        ?>
+                        <div class="item-name">本站总访问量 :</div>
+                        <div class="item-count">
+                            <?php
+                            if (isset($statsData['pageviews']['value'])) {
+                                echo $statsData['pageviews']['value'];
+                            } else {
+                                echo "无法获取";
+                            }
+                            ?>
+                        </div>
+
+                    </div>
+                    <div class="webinfo-item">
                         <div class="item-name">文章数目 :</div>
                         <div class="item-count">
                             <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
@@ -435,12 +477,7 @@
                             </div>
                         </div>
                     <?php endif; ?>
-                    <div class="webinfo-item">
-                        <div class="item-name">本站总访问量 :</div>
-                        <div class="item-count">
-                            <?php theAllViews(); ?>
-                        </div>
-                    </div>
+
                     <div class="webinfo-item">
                         <div class="item-name">最后更新时间 :</div>
                         <div class="item-count">
