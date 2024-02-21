@@ -422,12 +422,6 @@
                             <?php $stat->publishedPostsNum() ?>
                         </div>
                     </div>
-                    <!-- <div class="webinfo-item">
-                        <div class="item-name">已运行时间 :</div>
-                        <div class="item-count" id="runtimeshows" data-publishdate="">
-                            <?php echo RunTime() ?>
-                        </div>
-                    </div> -->
                     <div class="webinfo-item">
                         <div class="item-name">本站总字数 :</div>
                         <div class="item-count">

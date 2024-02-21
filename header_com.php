@@ -1,6 +1,7 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+<?php if (!defined('__TYPECHO_ROOT_DIR__'))
+  exit; ?>
 <?php $this->need('public/noqq.php'); ?>
-<?php if (!$this->user->hasLogin()) : ?>
+<?php if (!$this->user->hasLogin()): ?>
   <?php $this->need('public/defend.php'); ?>
 <?php endif; ?>
 <!DOCTYPE HTML>
@@ -8,10 +9,28 @@
 
 <head>
   <!-- umami跟踪代码 -->
+  <!-- 1.直接跟踪 -->
   <!-- <script async src="http://umami.lzyyyyyy.fun/script.js" data-website-id="7aa963db-7032-4a0e-a823-bbda16a88221"></script> -->
-  <script>
-    // 检查 localStorage 是否有 disableUmami 设置为 true
+  <!-- 2.缓存方法 -->
+  <!-- <script>
     if (!localStorage.getItem('disableUmami')) {
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = "http://umami.lzyyyyyy.fun/script.js";
+      script.setAttribute("data-website-id", "7aa963db-7032-4a0e-a823-bbda16a88221");
+      document.head.appendChild(script);
+    }
+  </script> -->
+  <!-- 3.cookie方法 -->
+  <script>
+    // 检查 Cookie 是否设置了 disableUmami
+    function checkCookie(name) {
+      return document.cookie.split(';').some(function (item) {
+        return item.trim().startsWith(name + '=');
+      });
+    }
+
+    if (!checkCookie('disableUmami')) {
       // 如果没有禁用 Umami，动态加载跟踪脚本
       var script = document.createElement('script');
       script.async = true;
@@ -54,26 +73,30 @@
   <meta name="renderer" content="webkit">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="<?php $this->options->themeColor() ?>">
-  <title><?php $this->archiveTitle(array(
-            'category'  =>  _t('分类 %s 下的文章'),
-            'search'    =>  _t('包含关键字 %s 的文章'),
-            'tag'       =>  _t('标签 %s 下的文章'),
-            'author'    =>  _t('%s 发布的文章')
-          ), '', ' - '); ?><?php $this->options->title(); ?></title>
+  <title>
+    <?php $this->archiveTitle(
+      array(
+        'category' => _t('分类 %s 下的文章'),
+        'search' => _t('包含关键字 %s 的文章'),
+        'tag' => _t('标签 %s 下的文章'),
+        'author' => _t('%s 发布的文章')
+      ), '', ' - '); ?>
+    <?php $this->options->title(); ?>
+  </title>
   <!-- 使用url函数转换相关路径 -->
   <link rel="preconnect" href="//<?php $this->options->jsdelivrLink() ?>" />
   <!--<link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css">-->
   <link rel="stylesheet" href="<?php $this->options->themeUrl('index.css?v1.7.3'); ?>">
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/style.css?v1.7.8'); ?>">
   <!--魔改美化-->
-  <?php if (!empty($this->options->beautifyBlock) && in_array('ShowBeautifyChange', $this->options->beautifyBlock)) : ?>
+  <?php if (!empty($this->options->beautifyBlock) && in_array('ShowBeautifyChange', $this->options->beautifyBlock)): ?>
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/custom.css?v1.5.9'); ?>">
   <?php endif; ?>
   <!--百度统计-->
-  <?php if ($this->options->baidustatistics != "") : ?>
+  <?php if ($this->options->baidustatistics != ""): ?>
     <script>
       var _hmt = _hmt || [];
-      (function() {
+      (function () {
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?<?php $this->options->baidustatistics(); ?>";
         var s = document.getElementsByTagName("script")[0];
@@ -82,8 +105,10 @@
     </script>
   <?php endif; ?>
   <!--谷歌AdSense广告-->
-  <?php if ($this->options->googleadsense != "") : ?>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=<?php $this->options->googleadsense(); ?>" crossorigin="anonymous"></script>
+  <?php if ($this->options->googleadsense != ""): ?>
+    <script async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=<?php $this->options->googleadsense(); ?>"
+      crossorigin="anonymous"></script>
   <?php endif; ?>
   <!--图标库-->
   <link href="https://at.alicdn.com/t/font_3159629_5bvsat8p5l.css" rel="stylesheet" />
@@ -91,17 +116,22 @@
   <!--其余静态文件-->
   <link rel="stylesheet" href="<?php cdnBaseUrl() ?>/css/fancybox.css">
   <link rel="stylesheet" href="<?php cdnBaseUrl() ?>/css/OwO.min.css">
-  <?php if (!empty($this->options->beautifyBlock) && in_array('showSnackbar', $this->options->beautifyBlock)) : ?>
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('/css/snackbar.min.css') ?>" media="print" onload="this.media='all'">
+  <?php if (!empty($this->options->beautifyBlock) && in_array('showSnackbar', $this->options->beautifyBlock)): ?>
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('/css/snackbar.min.css') ?>" media="print"
+      onload="this.media='all'">
     <script src="<?php $this->options->themeUrl('js/snackbar.min.js') ?>"></script>
   <?php endif; ?>
-  <?php if (!empty($this->options->beautifyBlock) && in_array('showLazyloadBlur', $this->options->beautifyBlock)) : ?>
+  <?php if (!empty($this->options->beautifyBlock) && in_array('showLazyloadBlur', $this->options->beautifyBlock)): ?>
     <style>
-      <?php if ($this->options->themeFontSize != "") : ?> :root {
-        --global-font-size: <?php $this->options->themeFontSize() ?>;
-      }
+      <?php if ($this->options->themeFontSize != ""): ?>
+        :root {
+          --global-font-size:
+            <?php $this->options->themeFontSize() ?>
+          ;
+        }
 
-      <?php endif ?>img[data-lazy-src]:not(.loaded) {
+      <?php endif ?>
+      img[data-lazy-src]:not(.loaded) {
         filter: blur(10px) brightness(1);
       }
 
@@ -112,7 +142,7 @@
       <?php $this->options->CustomCSS() ?>
     </style>
   <?php endif; ?>
-  <?php if (!empty($this->options->sidebarBlock) && !in_array('ShowMobileSide', $this->options->sidebarBlock)) : ?>
+  <?php if (!empty($this->options->sidebarBlock) && !in_array('ShowMobileSide', $this->options->sidebarBlock)): ?>
     <style>
       @media screen and (max-width:900px) {
 
@@ -231,7 +261,7 @@
       script.src = url
       script.async = true
       script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
+      script.onload = script.onreadystatechange = function () {
         const loadState = this.readyState
         if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
         script.onload = script.onreadystatechange = null
@@ -248,7 +278,7 @@
       isToc: !0,
     }
   </script>
-  <?php if ($this->is('post')) : ?>
+  <?php if ($this->is('post')): ?>
     <script id="config_change">
       var GLOBAL_CONFIG_SITE = {
         isPost: !0,
@@ -257,7 +287,7 @@
         isToc: !0,
       }
     </script>
-  <?php else : ?>
+  <?php else: ?>
     <script id="config_change">
       var GLOBAL_CONFIG_SITE = {
         isPost: !1,
@@ -284,8 +314,8 @@
     </style>
   </noscript>
   <script>
-    (e => {
-      e.saveToLocal = {
+      (e => {
+        e.saveToLocal = {
           set: (e, t, a) => {
             if (0 === a) return;
             const o = {
@@ -302,58 +332,58 @@
             localStorage.removeItem(e)
           }
         },
-        e.getScript = (e, t = {}) => new Promise(((a, o) => {
-          const c = document.createElement("script");
-          c.src = e, c.async = !0, c.onerror = o, c.onload = c.onreadystatechange = function() {
-            const e = this.readyState;
-            e && "loaded" !== e && "complete" !== e || (c.onload = c.onreadystatechange = null, a())
-          }, Object.keys(t).forEach((e => {
-            c.setAttribute(e, t[e])
-          })), document.head.appendChild(c)
-        })),
-        e.getCSS = (e, t = !1) => new Promise(((a, o) => {
-          const c = document.createElement("link");
-          c.rel = "stylesheet", c.href = e, t && (c.id = t), c.onerror = o, c.onload = c.onreadystatechange = function() {
-            const e = this.readyState;
-            e && "loaded" !== e && "complete" !== e || (c.onload = c.onreadystatechange = null, a())
-          }, document.head.appendChild(c)
-        })),
-        e.activateDarkMode = () => {
-          document.documentElement.setAttribute("data-theme", "dark"), null !== document.querySelector('meta[name="theme-color"]') && document.querySelector('meta[name="theme-color"]').setAttribute("content", "#0d0d0d")
-          var headerImg = document.getElementById('page-header');
-          //切换深色模式背景图
-          headerImg.style.backgroundImage = "url('https://s2.loli.net/2024/02/17/OR25dSatEmWwVkq.jpg')";
-          //切换深色模式头像
-          document.getElementById('img_hover').src = "https://s2.loli.net/2024/02/17/h41rvlyxgLnmcJK.jpg";
-        },
-        e.activateLightMode = () => {
-          document.documentElement.setAttribute("data-theme", "light"), null !== document.querySelector('meta[name="theme-color"]') && document.querySelector('meta[name="theme-color"]').setAttribute("content", "#ffffff")
-          var headerImg = document.getElementById('page-header');
-          //切换浅色模式背景图
-          headerImg.style.backgroundImage = "url(<?php $this->options->headerimg() ?>)";
-          //切换浅色模式头像
-          document.getElementById('img_hover').src = document.getElementById('img_hover').dataset.lazySrc;
-        };
-      const t = saveToLocal.get("theme"),
-        a = <?php $this->options->darkModeSelect() ?> === 4,
-        o = <?php $this->options->darkModeSelect() ?> === 1,
-        c = <?php $this->options->darkModeSelect() ?> === 2,
-        n = !a && !o && !c;
-      if (void 0 === t) {
-        if (o) activateLightMode();
-        else if (a) activateDarkMode();
-        else if (n) {
-          const e = (new Date).getHours();
-          <?php darkTimeFunc() ?> ? activateDarkMode() : activateLightMode()
-        }
-        window.matchMedia("(prefers-color-scheme: dark)").addListener((e => {
-          void 0 === saveToLocal.get("theme") && (e.matches ? activateDarkMode() : activateLightMode())
-        }))
-      } else "light" === t ? activateLightMode() : activateDarkMode();
-      const d = saveToLocal.get("aside-status");
-      void 0 !== d && ("hide" === d ? document.documentElement.classList.add("hide-aside") : document.documentElement.classList.remove("hide-aside"));
-      /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent) && document.documentElement.classList.add("apple")
-    })(window)
+          e.getScript = (e, t = {}) => new Promise(((a, o) => {
+            const c = document.createElement("script");
+            c.src = e, c.async = !0, c.onerror = o, c.onload = c.onreadystatechange = function () {
+              const e = this.readyState;
+              e && "loaded" !== e && "complete" !== e || (c.onload = c.onreadystatechange = null, a())
+            }, Object.keys(t).forEach((e => {
+              c.setAttribute(e, t[e])
+            })), document.head.appendChild(c)
+          })),
+          e.getCSS = (e, t = !1) => new Promise(((a, o) => {
+            const c = document.createElement("link");
+            c.rel = "stylesheet", c.href = e, t && (c.id = t), c.onerror = o, c.onload = c.onreadystatechange = function () {
+              const e = this.readyState;
+              e && "loaded" !== e && "complete" !== e || (c.onload = c.onreadystatechange = null, a())
+            }, document.head.appendChild(c)
+          })),
+          e.activateDarkMode = () => {
+            document.documentElement.setAttribute("data-theme", "dark"), null !== document.querySelector('meta[name="theme-color"]') && document.querySelector('meta[name="theme-color"]').setAttribute("content", "#0d0d0d")
+            var headerImg = document.getElementById('page-header');
+            //切换深色模式背景图
+            headerImg.style.backgroundImage = "url('https://s2.loli.net/2024/02/17/OR25dSatEmWwVkq.jpg')";
+            //切换深色模式头像
+            document.getElementById('img_hover').src = "https://s2.loli.net/2024/02/17/h41rvlyxgLnmcJK.jpg";
+          },
+          e.activateLightMode = () => {
+            document.documentElement.setAttribute("data-theme", "light"), null !== document.querySelector('meta[name="theme-color"]') && document.querySelector('meta[name="theme-color"]').setAttribute("content", "#ffffff")
+            var headerImg = document.getElementById('page-header');
+            //切换浅色模式背景图
+            headerImg.style.backgroundImage = "url(<?php $this->options->headerimg() ?>)";
+            //切换浅色模式头像
+            document.getElementById('img_hover').src = document.getElementById('img_hover').dataset.lazySrc;
+          };
+        const t = saveToLocal.get("theme"),
+          a = <?php $this->options->darkModeSelect() ?> === 4,
+          o = <?php $this->options->darkModeSelect() ?> === 1,
+          c = <?php $this->options->darkModeSelect() ?> === 2,
+          n = !a && !o && !c;
+        if (void 0 === t) {
+          if (o) activateLightMode();
+          else if (a) activateDarkMode();
+          else if (n) {
+            const e = (new Date).getHours();
+            <?php darkTimeFunc() ?> ? activateDarkMode() : activateLightMode()
+          }
+          window.matchMedia("(prefers-color-scheme: dark)").addListener((e => {
+            void 0 === saveToLocal.get("theme") && (e.matches ? activateDarkMode() : activateLightMode())
+          }))
+        } else "light" === t ? activateLightMode() : activateDarkMode();
+        const d = saveToLocal.get("aside-status");
+        void 0 !== d && ("hide" === d ? document.documentElement.classList.add("hide-aside") : document.documentElement.classList.remove("hide-aside"));
+        /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent) && document.documentElement.classList.add("apple")
+      })(window)
   </script>
   <style type="text/css" data-typed-js-css="true">
     .typed-cursor {
@@ -388,24 +418,40 @@
   </style>
   <!--额外的-->
 
-  <?php if ($this->options->EnableCustomColor === 'true') : ?>
+  <?php if ($this->options->EnableCustomColor === 'true'): ?>
     <style>
       ::-webkit-scrollbar-thumb {
-        background-color: <?php $this->options->CustomColorMain() ?> !important;
+        background-color:
+          <?php $this->options->CustomColorMain() ?>
+          !important;
       }
 
       :root {
-        --btn-hover-color: <?php $this->options->CustomColorButtonHover() ?>;
-        --btn-bg: <?php $this->options->CustomColorButtonBG() ?>;
-        --text-bg-hover: <?php $this->options->CustomColorButtonBG() ?>;
-        --hr-before-color: <?php $this->options->CustomColorButtonBG() ?>;
-        --text-bg-hover: <?php $this->options->CustomColorMain() ?>;
-        --hr-border: <?php $this->options->CustomColorMain() ?>;
+        --btn-hover-color:
+          <?php $this->options->CustomColorButtonHover() ?>
+        ;
+        --btn-bg:
+          <?php $this->options->CustomColorButtonBG() ?>
+        ;
+        --text-bg-hover:
+          <?php $this->options->CustomColorButtonBG() ?>
+        ;
+        --hr-before-color:
+          <?php $this->options->CustomColorButtonBG() ?>
+        ;
+        --text-bg-hover:
+          <?php $this->options->CustomColorMain() ?>
+        ;
+        --hr-border:
+          <?php $this->options->CustomColorMain() ?>
+        ;
       }
 
       ::selection,
       #aside-content #card-toc .toc-content .toc-link.active {
-        background: <?php $this->options->CustomColorSelection() ?>;
+        background:
+          <?php $this->options->CustomColorSelection() ?>
+        ;
       }
 
       #page-header.nav-fixed #nav #site-name:hover,
@@ -421,15 +467,20 @@
       .search-dialog .search-nav,
       #page-header.nav-fixed #nav a:hover,
       .search-dialog .search-nav .search-close-button:hover {
-        color: <?php $this->options->CustomColorMain() ?>;
+        color:
+          <?php $this->options->CustomColorMain() ?>
+        ;
       }
 
       #nav .site-page:not(.child):after {
-        background-color: <?php $this->options->CustomColorMain() ?>
+        background-color:
+          <?php $this->options->CustomColorMain() ?>
       }
 
       #local-search .search-dialog .local-search-box input {
-        border: 2px solid <?php $this->options->CustomColorMain() ?> !important;
+        border: 2px solid
+          <?php $this->options->CustomColorMain() ?>
+          !important;
       }
 
       #aside-content .card-archives ul.card-archive-list>.card-archive-list-item a:hover,
@@ -438,13 +489,15 @@
       }
 
       #aside-content .card-tag-cloud a:hover {
-        color: <?php $this->options->CustomColorMain() ?> !important;
+        color:
+          <?php $this->options->CustomColorMain() ?>
+          !important;
       }
     </style>
   <?php endif ?>
   <?php $this->header('generator=&'); ?>
   <?php $this->options->CustomHead() ?>
-  <?php if (is_array($this->options->beautifyBlock) && in_array('showNoAlertSearch', $this->options->beautifyBlock)) : ?>
+  <?php if (is_array($this->options->beautifyBlock) && in_array('showNoAlertSearch', $this->options->beautifyBlock)): ?>
     <style>
       #dSearch {
         display: inline-block;
@@ -487,7 +540,7 @@
   <script src="<?php $this->options->themeUrl('/js/main.js?v1.7.3'); ?>"> </script>
   <script src="<?php $this->options->themeUrl('/js/utils.js?v1.7.3'); ?>"> </script>
   <script src="<?php $this->options->themeUrl('/js/tw_cn.js?v1.7.3'); ?>"> </script>
-  <?php if (is_array($this->options->beautifyBlock) && !in_array('showNoAlertSearch', $this->options->beautifyBlock)) : ?>
+  <?php if (is_array($this->options->beautifyBlock) && !in_array('showNoAlertSearch', $this->options->beautifyBlock)): ?>
     <script src="<?php $this->options->themeUrl('/js/local-search.js'); ?>"> </script>
   <?php endif ?>
 
@@ -510,26 +563,32 @@
     <div id="menu-mask" style="display: none;"></div>
     <div id="sidebar-menus" class="">
       <div class="avatar-img is-center">
-        <img src="<?php $this->options->logoUrl() ?>" onerror="this.onerror=null;this.src='https://<?php $this->options->jsdelivrLink() ?>/npm/hexo-butterfly@1.0.0/themes/butterfly/source/img/friend_404.gif'" alt="avatar">
+        <img src="<?php $this->options->logoUrl() ?>"
+          onerror="this.onerror=null;this.src='https://<?php $this->options->jsdelivrLink() ?>/npm/hexo-butterfly@1.0.0/themes/butterfly/source/img/friend_404.gif'"
+          alt="avatar">
       </div>
       <div class="site-data">
         <div class="card-info-data site-data is-center">
           <a href="<?php $this->options->archivelink() ?>">
             <div class="headline">文章</div>
             <div class="length-num">
-              <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?><?php $stat->publishedPostsNum() ?>
+              <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
+              <?php $stat->publishedPostsNum() ?>
             </div>
           </a>
           <a href="<?php $this->options->tagslink() ?>">
             <div class="headline">标签</div>
-            <div class="length-num"><?php echo tagsNum(); ?></div>
+            <div class="length-num">
+              <?php echo tagsNum(); ?>
+            </div>
           </a>
           <a href="<?php $this->options->categorylink() ?>">
             <div class="headline">
               分类
             </div>
             <div class="length-num">
-              <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?><?php $stat->categoriesNum() ?>
+              <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
+              <?php $stat->categoriesNum() ?>
             </div>
           </a>
         </div>
@@ -539,44 +598,50 @@
         <div class="menus_item">
           <a class="site-page search search-form-input search-btn">
             <i class="fas fa-search fa-fw"></i>
-            <form method="post" action="<?php $this->options->siteUrl(); ?>" role="search" id="dSearch" style="display:inline;">
+            <form method="post" action="<?php $this->options->siteUrl(); ?>" role="search" id="dSearch"
+              style="display:inline;">
               搜索
             </form>
           </a>
         </div>
         <div class="menus_item">
-          <a class="site-page" href="<?php $this->options->siteUrl(); ?>"><i class="fa-fw fas fa-home"></i><span> 首页</span></a>
+          <a class="site-page" href="<?php $this->options->siteUrl(); ?>"><i class="fa-fw fas fa-home"></i><span>
+              首页</span></a>
         </div>
-        <?php if ($this->options->EnableAutoHeaderLink === 'on') : ?>
-          <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?> <?php while ($pages->next()) : ?>
+        <?php if ($this->options->EnableAutoHeaderLink === 'on'): ?>
+          <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
+          <?php while ($pages->next()): ?>
             <div class="menus_item">
-              <a<?php if ($this->is('page', $pages->slug)) : ?><?php endif; ?> class="site-page" href="<?php $pages->permalink(); ?>">
+              <a<?php if ($this->is('page', $pages->slug)): ?><?php endif; ?> class="site-page"
+                href="<?php $pages->permalink(); ?>">
                 <?php switch ($pages->title) {
-                                                                                case "友链":
-                                                                                  echo "<i class='fa-fw fas fa-link'></i>";
-                                                                                  break;
-                                                                                case "关于":
-                                                                                  echo "<i class='fa-fw fas fa-user'></i>";
-                                                                                  break;
-                                                                                case "留言":
-                                                                                  echo "<i class='fa-fw fas fa-comment-dots'></i>";
-                                                                                  break;
-                                                                                case "归档":
-                                                                                  echo "<i class='fa-fw fas fa-archive'></i>";
-                                                                                  break;
-                                                                                case "标签":
-                                                                                  echo "<i class='fa-fw fas fa-tags'></i>";
-                                                                                  break;
-                                                                                case "分类":
-                                                                                  echo "<i class='fa-fw fas fa-folder-open'></i>";
-                                                                                  break;
-                                                                                case "留言板":
-                                                                                  echo "<i class='fa-fw fa fa-comment-dots'></i>";
-                                                                                  break;
-                                                                                default:
-                                                                                  echo "<i class='fa-fw fa fa-coffee'></i>";
-                                                                              } ?>
-                <span><?php $pages->title(); ?></span>
+                  case "友链":
+                    echo "<i class='fa-fw fas fa-link'></i>";
+                    break;
+                  case "关于":
+                    echo "<i class='fa-fw fas fa-user'></i>";
+                    break;
+                  case "留言":
+                    echo "<i class='fa-fw fas fa-comment-dots'></i>";
+                    break;
+                  case "归档":
+                    echo "<i class='fa-fw fas fa-archive'></i>";
+                    break;
+                  case "标签":
+                    echo "<i class='fa-fw fas fa-tags'></i>";
+                    break;
+                  case "分类":
+                    echo "<i class='fa-fw fas fa-folder-open'></i>";
+                    break;
+                  case "留言板":
+                    echo "<i class='fa-fw fa fa-comment-dots'></i>";
+                    break;
+                  default:
+                    echo "<i class='fa-fw fa fa-coffee'></i>";
+                } ?>
+                <span>
+                  <?php $pages->title(); ?>
+                </span>
                 </a>
             </div>
           <?php endwhile; ?>
@@ -587,10 +652,10 @@
   </div>
   <!--移动导航栏-->
   <script>
-    $(document).ready(function() {
-      $('.search-btn').on('click', function() {
-        $('#sidebar-menus').removeClass('open'); // 假设 'open' 类控制着侧栏的显示
-        $('#menu-mask').hide(); // 如果有遮罩层，也需要隐藏
+      $(document).ready(function () {
+        $('.search-btn').on('click', function () {
+          $('#sidebar-menus').removeClass('open'); // 假设 'open' 类控制着侧栏的显示
+          $('#menu-mask').hide(); // 如果有遮罩层，也需要隐藏
+        });
       });
-    });
   </script>
