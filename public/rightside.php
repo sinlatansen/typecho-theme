@@ -2,7 +2,7 @@
   <div id="rightside-config-hide" class="">
     <button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button>
     <button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button>
-    <?php if ($this->is('post')) : ?>
+    <?php if ($this->is('post')): ?>
       <button id="readmode" type="button" title="阅读模式">
         <i class="fas fa-book-open"></i>
       </button>
@@ -24,18 +24,18 @@
       <i class="fas fa-cog fa-spin">
       </i>
     </button>
-    <?php if ($this->is('post')) : ?>
+    <?php if ($this->is('post')): ?>
       <button class="close" id="mobile-toc-button" type="button" title="目录">
         <i class="fas fa-list-ul">
         </i>
       </button>
     <?php endif ?>
-    <?php if ($this->is('post') && $this->allow('comment') || $this->is('page') && $this->allow('comment')) : ?>
+    <!-- <?php if ($this->is('post') && $this->allow('comment') || $this->is('page') && $this->allow('comment')): ?>
       <a id="to_comment" href="#comments" title="直达评论">
         <i class="fas fa-comments">
         </i>
       </a>
-    <?php endif ?>
+    <?php endif ?> -->
     <button id="go-up" type="button" title="回到顶部" class="show-percent">
       <span class="scroll-percent"></span>
       <i class="fas fa-arrow-up">

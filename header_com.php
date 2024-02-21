@@ -8,6 +8,9 @@
 <html data-theme="light" class="">
 
 <head>
+  <!-- typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  
   <!-- umami跟踪代码 -->
   <!-- 1.直接跟踪 -->
   <!-- <script async src="http://umami.lzyyyyyy.fun/script.js" data-website-id="7aa963db-7032-4a0e-a823-bbda16a88221"></script> -->
@@ -385,37 +388,7 @@
         /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent) && document.documentElement.classList.add("apple")
       })(window)
   </script>
-  <style type="text/css" data-typed-js-css="true">
-    .typed-cursor {
-      opacity: 1;
-    }
-
-    .typed-cursor.typed-cursor--blink {
-      animation: typedjsBlink 0.7s infinite;
-      -webkit-animation: typedjsBlink 0.7s infinite;
-      animation: typedjsBlink 0.7s infinite;
-    }
-
-    @keyframes typedjsBlink {
-      50% {
-        opacity: 0.0;
-      }
-    }
-
-    @-webkit-keyframes typedjsBlink {
-      0% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.0;
-      }
-
-      100% {
-        opacity: 1;
-      }
-    }
-  </style>
+ 
   <!--额外的-->
 
   <?php if ($this->options->EnableCustomColor === 'true'): ?>
