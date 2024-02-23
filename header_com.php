@@ -37,7 +37,7 @@
       // 如果没有禁用 Umami，动态加载跟踪脚本
       var script = document.createElement('script');
       script.async = true;
-      script.src = "http://umami.lzyyyyyy.fun/script.js";
+      script.src = "https://umami-zeta-tan.vercel.app/script.js";
       script.setAttribute("data-website-id", "7aa963db-7032-4a0e-a823-bbda16a88221");
       document.head.appendChild(script);
     }
