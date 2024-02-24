@@ -140,7 +140,7 @@
                 </a>
             </div> -->
             <div class="menus_item">
-                <a class="site-page" href="https://blog.wehaox.com/about.html">
+                <a class="site-page" href="/about-me.html">
                     <i class="fa-fw fas fa-user"></i>
                     <span>关于这一切</span>
                 </a>
