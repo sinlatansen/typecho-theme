@@ -358,63 +358,32 @@
                     <div class="item-name">当前在线用户数 :</div>
                     <div class="item-count" id="activeUsersCount">加载中...</div>
                 </div>
+                <div class="webinfo-item">
+                    <div class="item-name">本站总访问量 :</div>
+                    <div class="item-count" id="totalPageviews">加载中...</div>
+                </div>
                 <script>
-                setTimeout(function() {
-                    fetch('/getActive.php')
+                // 定义一个函数来发起AJAX请求并更新页面内容
+                function updateData() {
+                    fetch('/usr/themes/butterfly/public/fetchUmamiData.php')
                         .then(response => response.json())
                         .then(data => {
                             document.getElementById('activeUsersCount').textContent = data.activeUsers;
+                            document.getElementById('totalPageviews').textContent = data.totalPageviews;
                         })
-
                         .catch(error => {
-                            console.error('Error fetching active users:', error);
-                            document.getElementById('activeUsersCount').textContent = '加载失败';
+                            console.error('Error fetching data:', error);
                         });
-                }, 3000); // 延迟 3 秒
+                }
+
+                // 在页面加载时立即更新数据
+                updateData();
+
+                // 每五分钟更新一次数据
+                setInterval(updateData, 300000); // 300000毫秒 = 5分钟
                 </script>
 
 
-                <!-- <div class="webinfo-item">
-                        <?php
-                        $statsUrl = 'http://umami.lzyyyyyy.fun/api/websites/7aa963db-7032-4a0e-a823-bbda16a88221/stats'; // 获取网站统计数据的端点
-                        // 设置时间范围：从2024年2月20日到现在
-                        $startAt = strtotime('2024-02-20') * 1000; // 转换为毫秒
-                        $endAt = time() * 1000; // 当前时间，转换为毫秒
-                    
-                        // 格式化统计 URL 以包含时间范围
-                        // 构造包含时间范围的统计 URL
-                        $statsUrl = "http://umami.lzyyyyyy.fun/api/websites/7aa963db-7032-4a0e-a823-bbda16a88221/stats?startAt={$startAt}&endAt={$endAt}";
-                        // 使用授权令牌获取网站统计数据
-                        $ch = curl_init();
-                        curl_setopt($ch, CURLOPT_URL, $statsUrl);
-                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer ' . $token));
-
-                        $response = curl_exec($ch);
-                        if (curl_errno($ch)) {
-                            echo '获取统计数据请求错误：' . curl_error($ch);
-                            curl_close($ch);
-                            exit;
-                        }
-                        curl_close($ch);
-
-                        // 解析统计数据以获取总访问量
-                        $statsData = json_decode($response, true);
-                        // echo $response;
-                    
-                        ?>
-                        <div class="item-name">本站总访问量 :</div>
-                        <div class="item-count">
-                            <?php
-                            if (isset($statsData['pageviews']['value'])) {
-                                echo $statsData['pageviews']['value'];
-                            } else {
-                                echo "无法获取";
-                            }
-                            ?>
-                        </div>
-
-                    </div> -->
                 <div class="webinfo-item">
                     <div class="item-name">文章数目 :</div>
                     <div class="item-count">
