@@ -364,7 +364,6 @@
                         .then(response => response.json())
                         .then(data => {
                             document.getElementById('activeUsersCount').textContent = data.activeUsers;
-                            console.log(this.data.activeUsers);
                         })
 
                         .catch(error => {
