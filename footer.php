@@ -46,7 +46,6 @@
             <div class="copyright">
                 © <?php echo date('Y'); ?> By <?php $this->author(); ?>
             </div>
-
             <div class="beian-info">
                 <a href="http://www.beian.miit.gov.cn" target="_blank">鄂ICP备2024037645号</a>
                 <a href="https://beian.mps.gov.cn/#/query/webSearch?code=42011702000772" target="_blank">

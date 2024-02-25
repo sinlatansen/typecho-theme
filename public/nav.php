@@ -6,8 +6,8 @@
             <?php else : ?>
                  <span class="site-name"><?php $this->options->title() ?></span> 
             <?php endif ?> -->
-            <!-- <img src="img/fugu.svg" alt="fugu"> -->
-            <svg xmlns="http://www.w3.org/2000/svg" style="zoom:40%; background: none; display: block; shape-rendering: auto;" width="197" height="156" preserveAspectRatio="xMidYMid">
+            <span class="site-name">fugu</span>
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" style="zoom:40%; background: none; display: block; shape-rendering: auto;" width="197" height="156" preserveAspectRatio="xMidYMid">
                 <style type="text/css">
                     text {
                         text-anchor: middle;
@@ -50,7 +50,7 @@
                         }
                     }
                 </style>
-            </svg>
+            </svg> -->
         </a>
     </span>
     <div id="menus">
@@ -69,19 +69,19 @@
         <div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div>
         <div class="menus_items">
             <style>
-                #nav .menus_items .menus_item .menus_item_child li:hover {
-                    background-color: lightskyblue !important;
-                }
+            #nav .menus_items .menus_item .menus_item_child li:hover {
+                background-color: lightskyblue !important;
+            }
 
-                #nav .menus_items .menus_item .menus_item_child li:first-child {
-                    border-top-left-radius: 5px;
-                    border-top-right-radius: 5px;
-                }
+            #nav .menus_items .menus_item .menus_item_child li:first-child {
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+            }
 
-                #nav .menus_items .menus_item .menus_item_child li:last-child {
-                    border-bottom-right-radius: 5px;
-                    border-bottom-left-radius: 5px;
-                }
+            #nav .menus_items .menus_item .menus_item_child li:last-child {
+                border-bottom-right-radius: 5px;
+                border-bottom-left-radius: 5px;
+            }
             </style>
             <div class="menus_item">
                 <a class="site-page search-form-input" title="搜索">
