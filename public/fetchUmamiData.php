@@ -1,9 +1,9 @@
 <?php
 
 // Umami API endpoints and credentials
-$loginUrl = 'https://umami-zeta-tan.vercel.app/api/auth/login';
-$activeUsersUrl = 'https://umami-zeta-tan.vercel.app/api/websites/7aa963db-7032-4a0e-a823-bbda16a88221/active';
-$statsUrlBase = 'https://umami-zeta-tan.vercel.app/api/websites/7aa963db-7032-4a0e-a823-bbda16a88221/stats';
+$loginUrl = 'http://umami.lzyyyyyy.fun/api/auth/login';
+$activeUsersUrl = 'http://umami.lzyyyyyy.fun/api/websites/7aa963db-7032-4a0e-a823-bbda16a88221/active';
+$statsUrlBase = 'http://umami.lzyyyyyy.fun/api/websites/7aa963db-7032-4a0e-a823-bbda16a88221/stats';
 $username = 'admin'; // Replace with your actual username
 $password = 'lzy20010414'; // Replace with your actual password
 
