@@ -360,7 +360,7 @@
                     .setAttribute("content", "#0d0d0d")
                 var headerImg = document.querySelector('#page-header.full_page');
                 //切换深色模式背景图
-                headerImg.style.backgroundImage = "url('https://s2.loli.net/2024/02/17/OR25dSatEmWwVkq.jpg')";
+                headerImg.style.backgroundImage = "url(<?php $this->options->headerblackimg() ?>)";
                 //切换深色模式头像
                 document.getElementById('img_hover').src = "https://s2.loli.net/2024/02/17/h41rvlyxgLnmcJK.jpg";
             },
@@ -574,6 +574,31 @@
                             搜索
                         </form>
                     </a>
+                </div>
+                <div class="menus_item">
+                    <a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer">
+                        <i class="fas fa-blog"></i>
+                        <span>文章</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="menus_item_child">
+
+                        <li>
+                            <a class="site-page child" href="/archive.html">
+                                <i class="fa-fw fas fa-archive"></i>
+                                <span>归档</span></a>
+                        </li>
+                        <li>
+                            <a class="site-page child" href="/tags.html">
+                                <i class="fa-fw fas fa-tags"></i>
+                                <span>标签</span></a>
+                        </li>
+                        <li>
+                            <a class="site-page child" href="/category-list.html">
+                                <i class="fa-fw fas fa-folder-open"></i>
+                                <span>分类</span></a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="menus_item">
                     <a class="site-page" href="<?php $this->options->siteUrl(); ?>"><i

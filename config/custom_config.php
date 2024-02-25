@@ -2,31 +2,31 @@
 function themeConfig($form)
 {
     ?>
-    <link rel="stylesheet" href="<?php Helper::options()->themeUrl('css/themedash.css?v1.5.3'); ?>">
-    <div class='set_toc'>
-        <div class='mtoc'>
-            <a href='#themeBackup'>主题备份与还原</a>
-            <a href='#cids'>文章置顶及公共部分</a>
-            <a href='#pjax'>pjax设置</a>
-            <a href='#friends'>友情链接设置</a>
-            <a href='#reward'>打赏功能</a>
-            <a href='#aside'>侧边栏显示设置</a>
-            <a href='#beautifyBlock'>美化选项</a>
-            <a href='#ShowLive2D'>Live2D设置</a>
-            <a href='#otherCustom'>其他自定义内容</a>
-            <a href='#CustomColor'>自定义颜色</a>
-            <a href='#NULL' id='point'>返回上次保存设置时的锚点</a>
-        </div>
+<link rel="stylesheet" href="<?php Helper::options()->themeUrl('css/themedash.css?v1.5.3'); ?>">
+<div class='set_toc'>
+    <div class='mtoc'>
+        <a href='#themeBackup'>主题备份与还原</a>
+        <a href='#cids'>文章置顶及公共部分</a>
+        <a href='#pjax'>pjax设置</a>
+        <a href='#friends'>友情链接设置</a>
+        <a href='#reward'>打赏功能</a>
+        <a href='#aside'>侧边栏显示设置</a>
+        <a href='#beautifyBlock'>美化选项</a>
+        <a href='#ShowLive2D'>Live2D设置</a>
+        <a href='#otherCustom'>其他自定义内容</a>
+        <a href='#CustomColor'>自定义颜色</a>
+        <a href='#NULL' id='point'>返回上次保存设置时的锚点</a>
     </div>
-    <form class="protected" action="?butterflybf" method="post" id="themeBackup">
-        <input type="submit" name="type" class="btn btn-s" value="备份主题数据" />&nbsp;&nbsp;<input type="submit" name="type"
-            class="btn btn-s" value="还原主题数据" />&nbsp;&nbsp;<input type="submit" name="type" class="btn btn-s"
-            value="删除备份数据" />
-    </form>
-    <script src='https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js'></script>
-    <script src="<?php Helper::options()->themeUrl('js/themecustom.js?v1.5.3'); ?>"></script>
-    <script src='https://static.wehao.org/postdomai.js'></script>
-    <?php
+</div>
+<form class="protected" action="?butterflybf" method="post" id="themeBackup">
+    <input type="submit" name="type" class="btn btn-s" value="备份主题数据" />&nbsp;&nbsp;<input type="submit" name="type"
+        class="btn btn-s" value="还原主题数据" />&nbsp;&nbsp;<input type="submit" name="type" class="btn btn-s"
+        value="删除备份数据" />
+</form>
+<script src='https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js'></script>
+<script src="<?php Helper::options()->themeUrl('js/themecustom.js?v1.5.3'); ?>"></script>
+<script src='https://static.wehao.org/postdomai.js'></script>
+<?php
     $sticky_cids = new Typecho_Widget_Helper_Form_Element_Text('sticky_cids', NULL, NULL, '置顶文章的 cid', '<div style="font-family:arial; background:#E8EFD1; padding:8px">按照排序输入, 请以半角逗号或空格分隔 cid</div>');
     $sticky_cids->setAttribute('id', 'cids');
     $form->addInput($sticky_cids);
@@ -148,6 +148,9 @@ function themeConfig($form)
 
     $headerimg = new Typecho_Widget_Helper_Form_Element_Text('headerimg', NULL, _t('https://s2.loli.net/2023/01/18/bIJTVaR3MLPzcZ7.jpg'), _t('主页顶图(banner image)'), _t('填入主页头图链接'));
     $form->addInput($headerimg);
+
+    $headerblackimg = new Typecho_Widget_Helper_Form_Element_Text('headerblackimg', NULL, _t('https://s2.loli.net/2023/01/18/bIJTVaR3MLPzcZ7.jpg'), _t('主页深色模式顶图(banner image)'), _t('填入主页头图链接'));
+    $form->addInput($headerblackimg);
 
     $buildtime = new Typecho_Widget_Helper_Form_Element_Text('buildtime', NULL, _t('2021/04/05'), _t('建站时间'), _t('按照输入框内格式填写'));
     $form->addInput($buildtime);
@@ -687,20 +690,22 @@ function themeConfig($form)
                 $updateRows = $db->query($update);
                 echo '<div class="tongzhi">备份已更新，请等待自动刷新！如果等不到请点击';
                 ?>
-                <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
-                <script
-                    language="JavaScript">window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);</script>
-                <?php
+<a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
+<script language="JavaScript">
+window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);
+</script>
+<?php
             } else {
                 if ($ysj) {
                     $insert = $db->insert('table.options')->rows(array('name' => 'theme:butterflybf', 'user' => '0', 'value' => $ysj));
                     $insertId = $db->query($insert);
                     echo '<div class="tongzhi">备份完成，请等待自动刷新！如果等不到请点击';
                     ?>
-                    <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
-                    <script
-                        language="JavaScript">window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);</script>
-                    <?php
+<a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
+<script language="JavaScript">
+window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);
+</script>
+<?php
                 }
             }
         }
@@ -712,10 +717,11 @@ function themeConfig($form)
                 $updateRows = $db->query($update);
                 echo '<div class="tongzhi">检测到主题备份数据，恢复完成，请等待自动刷新！如果等不到请点击';
                 ?>
-                <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
-                <script
-                    language="JavaScript">window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2000);</script>
-                <?php
+<a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
+<script language="JavaScript">
+window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2000);
+</script>
+<?php
             } else {
                 echo '<div class="tongzhi">没有主题备份数据，恢复不了哦！</div>';
             }
@@ -726,10 +732,11 @@ function themeConfig($form)
                 $deletedRows = $db->query($delete);
                 echo '<div class="tongzhi">删除成功，请等待自动刷新，如果等不到请点击';
                 ?>
-                <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
-                <script
-                    language="JavaScript">window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);</script>
-                <?php
+<a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
+<script language="JavaScript">
+window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);
+</script>
+<?php
             } else {
                 echo '<div class="tongzhi">不用删了！备份不存在！！！</div>';
             }

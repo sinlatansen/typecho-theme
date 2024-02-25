@@ -237,7 +237,7 @@ hr:before {
 .error404 #error-wrap .error-content,
 .layout>.recent-posts .pagination> :not(.space),
 .layout>div:first-child:not(.recent-posts) {
-  border-radius: 8px;
+  border-radius: 30px;
   background: var(--card-bg);
   -webkit-box-shadow: var(--card-box-shadow);
   box-shadow: var(--card-box-shadow);
@@ -1373,7 +1373,7 @@ canvas:not(#ribbon-canvas) {
 
 :root {
   --global-font-size: 14px;
-  --global-bg: #fff;
+  --global-bg: #fafafa;
   --font-color: #4c4948;
   --hr-border: #a4d8fa;
   --hr-before-color: #80c8f8;
@@ -3706,7 +3706,7 @@ h1.page-title+.tag-cloud-list {
 
 #footer {
   position: relative;
-  background-color: #49b1f5;
+  background-color: #2e66b9;
   background-attachment: scroll;
   background-position: bottom;
   background-size: cover;
