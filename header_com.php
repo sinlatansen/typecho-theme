@@ -8,6 +8,9 @@
 <html data-theme="light" class="">
 
 <head>
+    <!-- lottie动画库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"></script>
+
     <!-- typed.js -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 

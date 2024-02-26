@@ -57,6 +57,16 @@
         <span>小站已经成功运行</span>
         <div id="runTimeDisplay" style="display: inline-block;"></div>
         <span>啦！</span>
+        <div id="activity" style="display: inline-block; vertical-align: middle;"></div>
+        <script>
+            let animation = lottie.loadAnimation({
+                container: document.getElementById('activity'), // 动画容器
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'usr/themes/butterfly/img/activity.json' // 动画JSON文件的路径
+            });
+        </script>
         <div class="additional-links">
             <a target="_blank" href="https://typecho.org/" title="博客框架为Typecho_v1.2.1"><img
                     src="/usr/themes/butterfly/img/1.svg"></a>
@@ -69,6 +79,10 @@
         </div>
     </div>
     <style>
+    #activity {
+        width: 30px; /* 调整动画容器的宽度 */
+        height: 30px; /* 调整动画容器的高度 */
+    }
     .footer-container {
         display: flex;
         flex-direction: column;
