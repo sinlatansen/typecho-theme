@@ -79,6 +79,10 @@
         color: #fff;
     }
 
+    .additional-links {
+        padding-top: 8px;
+    }
+
     .additional-links a {
         text-decoration: none;
         margin-right: 20px;
