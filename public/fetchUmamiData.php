@@ -1,11 +1,20 @@
 <?php
+/*
+ * @Author: 林郅言 lllzzzyyy@buaa.edu.cn
+ * @Date: 2024-02-26 11:45:09
+ * @LastEditTime: 2024-02-26 17:56:00
+ * @FilePath: \butterfly\public\fetchUmamiData.php
+ * @Description: 
+ * 
+ */
 
-// Umami API endpoints and credentials
-$loginUrl = 'http://umami.lzyyyyyy.fun/api/auth/login';
-$activeUsersUrl = 'http://umami.lzyyyyyy.fun/api/websites/7aa963db-7032-4a0e-a823-bbda16a88221/active';
-$statsUrlBase = 'http://umami.lzyyyyyy.fun/api/websites/7aa963db-7032-4a0e-a823-bbda16a88221/stats';
-$username = 'admin'; // Replace with your actual username
-$password = 'lzy20010414'; // Replace with your actual password
+$config = require 'config.php';
+$username = $config['username'];
+$password = $config['password'];
+$loginUrl = $config['loginUrl'];
+$activeUsersUrl = $config['activeUsersUrl'];
+$statsUrlBase = $config['statsUrlBase'];
+
 
 // Function to perform a cURL request
 function curlRequest($url, $postFields = null, $headers = []) {
