@@ -1,6 +1,10 @@
 <?php
 
-$config=require 'config.php';
+// 读取 config.json 文件内容
+$jsonString = file_get_contents('config.json');
+
+// 解析 JSON 数据为 PHP 数组
+$config = json_decode($jsonString, true);
 $username = $config['username'];
 $password = $config['password'];
 $loginUrl = $config['loginUrl'];
