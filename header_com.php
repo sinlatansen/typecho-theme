@@ -511,9 +511,25 @@
 </head>
 
 <body>
-    <div id="loading-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background-color: white; z-index: 9999;">
+    <div id="loading-overlay">
         <div id="lottie-animation" style="width: 30%; height: 30%;"></div>
     </div>
+    <style>
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.5); 
+            backdrop-filter: blur(5px); /* 高斯模糊 */
+            z-index: 9999;
+        }
+
+    </style>
     <script>
     document.addEventListener("DOMContentLoaded", function(event) {
         var animation = lottie.loadAnimation({
@@ -529,7 +545,7 @@
             document.getElementById('loading-overlay').style.opacity = '0';
             setTimeout(function() {
                 document.getElementById('loading-overlay').style.display = 'none';
-            }, 500); // 逐渐隐藏加载层，与CSS过渡时间相匹配
+            }, 500);
         };
     });
     </script>
