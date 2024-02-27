@@ -511,6 +511,28 @@
 </head>
 
 <body>
+    <div id="loading-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background-color: white; z-index: 9999;">
+        <div id="lottie-animation" style="width: 30%; height: 30%;"></div>
+    </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        var animation = lottie.loadAnimation({
+            container: document.getElementById('lottie-animation'), 
+            path: '/usr/themes/butterfly/img/loadingBlue.json', 
+            renderer: 'svg', // Required
+            loop: true, // Optional
+            autoplay: true, // Optional
+        });
+
+        window.onload = function() {
+            // 确保所有资源包括图片都加载完成
+            document.getElementById('loading-overlay').style.opacity = '0';
+            setTimeout(function() {
+                document.getElementById('loading-overlay').style.display = 'none';
+            }, 500); // 逐渐隐藏加载层，与CSS过渡时间相匹配
+        };
+    });
+    </script>
     <script src="<?php $this->options->themeUrl('/js/main.js?v1.7.3'); ?>"> </script>
     <script src="<?php $this->options->themeUrl('/js/utils.js?v1.7.3'); ?>"> </script>
     <script src="<?php $this->options->themeUrl('/js/tw_cn.js?v1.7.3'); ?>"> </script>

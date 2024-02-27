@@ -3,7 +3,6 @@
 <?php Typecho_Plugin::factory('Process')->render(); ?>
 
 <body style="zoom: 1;">
-    <div id="web_bg"></div>
     <div class="page" id="body-wrap">
         <?php if (is_array($this->options->beautifyBlock) && in_array('ShowTopimg', $this->options->beautifyBlock)) : ?>
         <header class="full_page" id="page-header" style="background-image: url(<?php $this->options->headerimg() ?>)">
