@@ -384,8 +384,8 @@
                         });
                     }
 
-                    let animationActiveUsers = loadAnimation('loadingIconActiveUsers', 'usr/themes/butterfly/img/loading.json');
-                    let animationTotalPageviews = loadAnimation('loadingIconTotalPageviews', 'usr/themes/butterfly/img/loading.json');
+                    let animationActiveUsers = loadAnimation('loadingIconActiveUsers', '/usr/themes/butterfly/img/loading.json');
+                    let animationTotalPageviews = loadAnimation('loadingIconTotalPageviews', '/usr/themes/butterfly/img/loading.json');
 
                     function updateData() {
                         fetch('/usr/themes/butterfly/public/fetchUmamiData.php')
@@ -408,9 +408,7 @@
                     setInterval(updateData, 300000); // 300000毫秒 = 5分钟
 
                 </script>
-            
-
-
+        
                 <div class="webinfo-item">
                     <div class="item-name">文章数目 :</div>
                     <div class="item-count">

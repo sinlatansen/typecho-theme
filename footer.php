@@ -64,7 +64,7 @@
                 renderer: 'svg',
                 loop: true,
                 autoplay: true,
-                path: 'usr/themes/butterfly/img/activity.json' // 动画JSON文件的路径
+                path: '/usr/themes/butterfly/img/activity.json' // 动画JSON文件的路径
             });
         </script>
         <div class="additional-links">

@@ -265,35 +265,61 @@
             </div>
             <div class="webinfo">
 
+                <style>
+                    .loading-icon {
+                    width: 25px; /* 调整宽度 */
+                    height: 25px; /* 调整高度 */
+                </style>
                 <div class="webinfo-item">
                     <div class="item-name">当前在线用户数 :</div>
-                    <div class="item-count" id="activeUsersCount">加载中...</div>
+                    <div class="item-count" id="activeUsersCount">
+                        <div id="loadingIconActiveUsers" class="loading-icon"></div>
+                    </div>
+                    
                 </div>
                 <div class="webinfo-item">
                     <div class="item-name">本站总访问量 :</div>
-                    <div class="item-count" id="totalPageviews">加载中...</div>
+                    <div class="item-count" id="totalPageviews">
+                        <div id="loadingIconTotalPageviews" class="loading-icon"></div>
+                    </div>
+                    
                 </div>
+
                 <script>
-                // 定义一个函数来发起AJAX请求并更新页面内容
-                function updateData() {
-                    fetch('/usr/themes/butterfly/public/fetchUmamiData.php')
-                        .then(response => response.json())
-                        .then(data => {
-                            document.getElementById('activeUsersCount').textContent = data.activeUsers;
-                            document.getElementById('totalPageviews').textContent = data.totalPageviews;
-                        })
-                        .catch(error => {
-                            console.error('Error fetching data:', error);
+                    function loadAnimation(containerId, path) {
+                        return lottie.loadAnimation({
+                            container: document.getElementById(containerId),
+                            renderer: 'svg',
+                            loop: true,
+                            autoplay: true,
+                            path: path
                         });
-                }
+                    }
 
-                // 在页面加载时立即更新数据
-                updateData();
+                    let animationActiveUsers = loadAnimation('loadingIconActiveUsers', '/usr/themes/butterfly/img/loading.json');
+                    let animationTotalPageviews = loadAnimation('loadingIconTotalPageviews', '/usr/themes/butterfly/img/loading.json');
 
-                // 每五分钟更新一次数据
-                setInterval(updateData, 300000); // 300000毫秒 = 5分钟
+                    function updateData() {
+                        fetch('/usr/themes/butterfly/public/fetchUmamiData.php')
+                            .then(response => response.json())
+                            .then(data => {
+                                // 销毁对应的动画实例
+                                animationActiveUsers.destroy();
+                                animationTotalPageviews.destroy();
+
+                                // 更新页面内容
+                                document.getElementById('activeUsersCount').textContent = data.activeUsers == 0 ? '1' : data.activeUsers;
+                                document.getElementById('totalPageviews').textContent = data.totalPageviews;
+                            })
+                            .catch(error => {
+                                console.error('Error fetching data:', error);
+                            });
+                    }
+
+                    updateData();
+                    setInterval(updateData, 300000); // 300000毫秒 = 5分钟
+
                 </script>
-
                 <div class="webinfo-item">
                     <div class="item-name">文章数目 :</div>
                     <div class="item-count">
