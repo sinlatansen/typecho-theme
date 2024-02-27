@@ -18,7 +18,20 @@
             }
             </script>
             <div id="site-info">
-                <h1 id="site-title">求知无坦途。</h1>
+                <style>
+                @font-face {
+                    font-family: 'Lucida-Calligraphy-Italic';
+                    src: url('/usr/themes/butterfly/css/Lucida-Calligraphy-Italic.ttf')format('truetype');
+                }
+
+                #site-title {
+                    font-family: 'Lucida-Calligraphy-Italic';
+                }
+                </style>
+
+                <h1 id="site-title">May your return be graced</h1>
+                   <h1 id="site-title">  with the reunion of those who matter most.</h1>
+
                 <!-- <h1 id="site-title"><?php $this->options->description() ?></h1> -->
                 <!--注释掉副标题
             <div id="site-subtitle">
