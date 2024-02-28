@@ -139,12 +139,12 @@
                     <span>友链</span>
                 </a>
             </div> -->
-            <div class="menus_item">
+            <!-- <div class="menus_item">
                 <a class="site-page" href="/about-me.html">
                     <i class="fa-fw fas fa-user"></i>
                     <span>关于这一切</span>
                 </a>
-            </div>
+            </div> -->
             <!-- <div class="menus_item">
                 <a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer">
                     <i class="fas fa-network-wired"></i>

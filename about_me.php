@@ -5,7 +5,7 @@
     *  
     * @package custom  
     */ 
-// $this->need('header_com.php');
+//$this->need('page_header.php');
  ?>
 
 <?php  $this->need('header_com.php'); ?>
@@ -28,7 +28,7 @@ body {
 </style>
 
 <main class="layout" id="content-inner">
-
+<div id="page" style="width:100%;min-height: 100vh;">
 
     Hey!
     I'm fugu.
@@ -43,7 +43,7 @@ body {
     但是很享受这种，只是单纯求知欲去探索的状态，而不是为了
     希望在这块小天地记录一下生活，输出一下知识。
 
-
+</div>
 </main>
 
 <?php require_once('public/rightside.php'); ?>
