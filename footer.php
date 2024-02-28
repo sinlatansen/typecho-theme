@@ -76,6 +76,8 @@
                     src="/usr/themes/butterfly/img/3.svg"></a>
             <a target="_blank" href="https://github.com/sinlatansen" title="网站源码储存于Github仓库"><img
                     src="/usr/themes/butterfly/img/4.svg"></a>
+            <a target="_blank" href="https://giscus.app/zh-CN" title="评论系统为giscus"><img
+                    src="/usr/themes/butterfly/img/5.svg"></a>
         </div>
     </div>
     <style>

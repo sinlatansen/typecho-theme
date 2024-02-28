@@ -203,7 +203,28 @@
         })
       </script>
     <?php endif ?>
-    <?php $this->need('comments.php'); ?>
+
+
+    <!-- 评论区 -->
+<script src="https://giscus.app/client.js"
+  data-repo="sinlatansen/typecho-theme"
+  data-repo-id="R_kgDOLQA-Ow"
+  data-category="Announcements"
+  data-category-id="DIC_kwDOLQA-O84CdlEp"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="transparent_dark"
+  data-lang="zh-CN"
+  data-loading="lazy"
+  crossorigin="anonymous"
+  async>
+</script>
+    <?php //$this->need('comments.php'); ?>
+
+
   </div>
   <?php $this->need('post_sidebar.php'); ?>
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/Lapis-lzy.css'); ?>">
