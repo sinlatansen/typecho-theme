@@ -7,22 +7,6 @@
         <?php if (is_array($this->options->beautifyBlock) && in_array('ShowTopimg', $this->options->beautifyBlock)) : ?>
         <header class="full_page" id="page-header" style="background-image: url(<?php $this->options->headerimg() ?>)">
             <script>
-            // Adjust the header height on mobile devices
-            function adjustHeaderHeight() {
-                var header = document.getElementById('page-header');
-                if (header) {
-                    // Set the height to window's innerHeight
-                    header.style.height = window.innerHeight + 'px';
-                }
-            }
-
-            // Call the function on resize and orientation change
-            window.addEventListener('resize', adjustHeaderHeight);
-            window.addEventListener('orientationchange', adjustHeaderHeight);
-
-            // Initial adjustment
-            adjustHeaderHeight();
-
             var bg = document.documentElement.getAttribute('data-theme');
             console.log(bg);
             var imgHeader = document.getElementById('page-header');
