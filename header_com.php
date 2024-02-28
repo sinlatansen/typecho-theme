@@ -524,7 +524,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.5); 
             backdrop-filter: blur(5px); /* 高斯模糊 */
             z-index: 9999;
         }
