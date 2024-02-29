@@ -607,6 +607,51 @@
             <hr>
             <div class="menus_items">
                 <div class="menus_item">
+                <a class="site-page dark-light" title="深/浅">
+                   <i class="fas fa-adjust">
+                    </i>
+                   <span style="font-weight:650;"></span> 
+                </a>
+            </div>
+            <script>
+                const firstMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+                let firstSpanElement = document.querySelector('.dark-light span');
+                if(firstMode === 'light'){
+                    firstSpanElement.textContent = 'Light';
+                }else{
+                    firstSpanElement.textContent = 'Dark';
+                }
+                document.querySelector('.dark-light').addEventListener('click', function() {
+                    const nowMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+                    let spanElement = this.querySelector('span');
+                    if (nowMode === 'light') {
+                        spanElement.textContent = 'Dark';
+                        activateDarkMode();
+                        saveToLocal.set('theme', 'dark', 2);
+                        GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night);
+                        
+                    } else {
+                        spanElement.textContent = 'Light';
+                        activateLightMode();
+                        saveToLocal.set('theme', 'light', 2);
+                        GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day);
+                        
+                    }
+                    // handle some cases
+                    typeof utterancesTheme === 'function' && utterancesTheme();
+                    typeof changeGiscusTheme === 'function' && changeGiscusTheme();
+                    typeof FB === 'object' && window.loadFBComment();
+                    window.DISQUS && document.getElementById('disqus_thread').children.length && setTimeout(() => window.disqusReset(), 200);
+                    typeof runMermaid === 'function' && window.runMermaid();
+                });
+            </script>
+            <div class="menus_item">
+                <a class="site-page" title="首页" href="<?php $this->options->siteUrl(); ?>">
+                    <i class="fas fa-home-alt"></i>
+                    <span>首页</span>
+                </a>
+            </div>
+                <div class="menus_item">
                     <a class="site-page search search-form-input search-btn">
                         <i class="fas fa-search fa-fw"></i>
                         <form method="post" action="<?php $this->options->siteUrl(); ?>" role="search" id="dSearch"
@@ -641,10 +686,19 @@
                     </ul>
                 </div>
                 <div class="menus_item">
-                    <a class="site-page" href="<?php $this->options->siteUrl(); ?>"><i
-                            class="fa-fw fas fa-home"></i><span>
-                            首页</span></a>
+                <a class="site-page" title="留言板" href="/messages.html">
+                    <i class="fas fa-sticky-note"></i>
+                    <span>留言板</span>
+                </a>
                 </div>
+                <div class="menus_item">
+                    <a class="site-page" title="关于" href="/about-me.html">
+                        <i class="fas fa-address-card"></i>
+                        <span>关于这一切</span>
+                    </a>
+                </div>
+
+
                 <?php if ($this->options->EnableAutoHeaderLink === 'on'): ?>
                 <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
                 <?php while ($pages->next()): ?>

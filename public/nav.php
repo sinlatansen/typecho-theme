@@ -12,6 +12,7 @@
     <div id="menus">
         <div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div>
         <div class="menus_items">
+            <!-- 这里的一切改动记得带上header_com.php -->
             <style>
             #nav .menus_items .menus_item .menus_item_child li:hover {
                 background-color: lightskyblue !important;
@@ -67,7 +68,7 @@
                 });
             </script>
             <div class="menus_item">
-                <a class="site-page" title="首页" href="/">
+                <a class="site-page" title="首页" href="<?php $this->options->siteUrl(); ?>">
                     <i class="fas fa-home-alt"></i>
                     <span>首页</span>
                 </a>
