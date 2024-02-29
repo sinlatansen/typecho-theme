@@ -10,10 +10,10 @@
     <!-- <button id="translateLink" type="button" title="简繁转换">
       繁
     </button> -->
-    <button id="darkmode" type="button" title="浅色和深色模式转换">
+    <!-- <button id="darkmode" type="button" title="浅色和深色模式转换">
       <i class="fas fa-adjust">
       </i>
-    </button>
+    </button> -->
     <button id="hide-aside-btn" type="button" title="单栏和双栏切换">
       <i class="fas fa-arrows-alt-h">
       </i>

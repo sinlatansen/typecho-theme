@@ -84,6 +84,46 @@
             }
             </style>
             <div class="menus_item">
+                <a class="site-page dark-light" title="深/浅">
+                   <i class="fas fa-adjust">
+                    </i>
+                   <span style="font-weight:650;"></span> 
+                </a>
+            </div>
+            <script>
+                const firstMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+                let firstSpanElement = document.querySelector('.dark-light span');
+                if(firstMode === 'light'){
+                    firstSpanElement.textContent = 'Light';
+                }else{
+                    firstSpanElement.textContent = 'Dark';
+                }
+                document.querySelector('.dark-light').addEventListener('click', function() {
+                    const nowMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+                    let spanElement = this.querySelector('span');
+                    if (nowMode === 'light') {
+                        spanElement.textContent = 'Dark';
+                        activateDarkMode();
+                        saveToLocal.set('theme', 'dark', 2);
+                        GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night);
+                        
+                    } else {
+                        spanElement.textContent = 'Light';
+                        activateLightMode();
+                        saveToLocal.set('theme', 'light', 2);
+                        GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day);
+                        
+                    }
+                    // handle some cases
+                    typeof utterancesTheme === 'function' && utterancesTheme();
+                    typeof changeGiscusTheme === 'function' && changeGiscusTheme();
+                    typeof FB === 'object' && window.loadFBComment();
+                    window.DISQUS && document.getElementById('disqus_thread').children.length && setTimeout(() => window.disqusReset(), 200);
+                    typeof runMermaid === 'function' && window.runMermaid();
+                });
+            </script>
+
+            <div class="menus_item">
                 <a class="site-page search-form-input" title="搜索">
                     <i class="fa-fw fas fa-search"></i>
                     <span>搜索</span>
@@ -114,56 +154,6 @@
                     </li>
                 </ul>
             </div>
-            <!-- <div class="menus_item">
-                <a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer">
-                    <i class="far fa-file-alt"></i>
-                    <span>主题文档</span>
-                    <i class="fas fa-chevron-down"></i>
-                </a>
-                <ul class="menus_item_child">
-                    <li>
-                        <a class="site-page child" href="/archives/typecho-butterfly.html">
-                            <i class="fas fa-map-signs"></i>
-                            <span>使用说明</span></a>
-                    </li>
-                    <li>
-                        <a class="site-page child" href="/archives/tagplugins.html">
-                            <i class="fas fa-tag"></i>
-                            <span>标签外挂</span></a>
-                    </li>
-                </ul>
-            </div> -->
-            <!-- <div class="menus_item">
-                <a class="site-page" href="https://blog.wehaox.com/friend.html" title="友链">
-                    <i class="fa-fw fas fa-link"></i>
-                    <span>友链</span>
-                </a>
-            </div> -->
-            <!-- <div class="menus_item">
-                <a class="site-page" href="/about-me.html">
-                    <i class="fa-fw fas fa-user"></i>
-                    <span>关于这一切</span>
-                </a>
-            </div> -->
-            <!-- <div class="menus_item">
-                <a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer">
-                    <i class="fas fa-network-wired"></i>
-                    <span>其他站点</span>
-                    <i class="fas fa-chevron-down"></i>
-                </a>
-                <ul class="menus_item_child">
-                    <li>
-                        <a class="site-page child" href="https://www.wehaox.com/" target="_BLANK">
-                            <i class="fas fa-globe-asia"></i>
-                            <span>WeHao’s Web</span></a>
-                    </li>
-                    <li>
-                        <a class="site-page child" href="https://file.wehaox.com/" target="_BLANK">
-                            <i class="fas fa-share"></i>
-                            <span>WeHao‘s Share</span></a>
-                    </li>
-                </ul>
-            </div> -->
         </div>
     </div>
 </nav>
