@@ -23,8 +23,33 @@
 
 body {
     min-height: 100vh;
-    background-color: var(--global-bg);
+    background-image: url("https://images4.alphacoders.com/966/966314.jpg");
+    /* background-image: url("https://images.alphacoders.com/128/1281557.jpg"); */
+    background-size: cover; /* 背景图片覆盖整个body */
+    background-position: center; /* 背景图片居中显示 */
+    background-attachment: fixed; /* 背景图片固定，不随滚动条滚动 */
 }
+
+[data-theme="dark"] body{
+    background-image: url("https://images6.alphacoders.com/112/1123556.png");
+}
+
+#content-inner.layout{
+    padding-top: 20px!important;
+}
+
+#page {
+    /* 应用毛玻璃效果 */
+    backdrop-filter: blur(5px);
+    
+    /* 为了更好的效果，通常还会加上一层透明度 */
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="dark"] #page {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 
 #introduce{
     position: relative;
@@ -38,16 +63,18 @@ body {
 
 #enginfo{
     max-width: 600px;
+    line-height: 1.5;
+
 }
 
 #enginfo .I1{
-    font-size: 56px;
+    font-size: 64px;
     font-weight: 700;
     margin: -3px 0;
 }
 
 #enginfo .I2{
-    font-size: 32px;
+    font-size: 40px;
     font-weight: 700;
 }
 
@@ -112,33 +139,8 @@ body {
     </div>
      
     <div id="cninfo">
-        来自江城武汉，热干面人柱力。
-        目前BUAA EE硕士在读。
-        热爱分享生活，但是讨厌微信朋友圈给同一条朋友圈点赞还会触发通知。
-        平时的爱好是看动漫，听音乐和rice。
-        喜欢折腾浪费时间的东西，这种极客精神的启蒙是初一那部红米NOTE，那时候的精神家园是小米贴吧，现在是r/unixpron。
-        技术栈比较杂，又或者说是什么都不会。
-        但是很享受这种，只是单纯求知欲去探索的状态，而不是为了
-        希望在这块小天地记录一下生活，输出一下知识。
+        
     </div>
-
-
-<!-- <article class="post-content" id="article-container">
-      <?php
-      $db = Typecho_Db::get();
-      $sql = $db->select()->from('table.comments')
-        ->where('cid = ?', $this->cid)
-        ->where('mail = ?', $this->remember('mail', true))
-        ->limit(1);
-      $result = $db->fetchAll($sql);
-      if ($this->user->hasLogin() || $result) {
-        $content = preg_replace("/\[hide\](.*?)\[\/hide\]/sm", '<div class="reply-content">$1</div>', $this->content);
-      } else {
-        $content = preg_replace("/\[hide\](.*?)\[\/hide\]/sm", '<p class="need-reply">此处内容 <a href="#comments">回复</a> 可见</p>', $this->content);
-      }
-      echo $content;
-      ?>
-</article>  -->
 
 </div>
 </main>
