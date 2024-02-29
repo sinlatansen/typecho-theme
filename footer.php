@@ -70,13 +70,13 @@
         <div class="additional-links">
             <a target="_blank" href="https://typecho.org/" title="博客框架为Typecho_v1.2.1"><img
                     src="/usr/themes/butterfly/img/1.svg"></a>
-            <a target="_blank" href="https://github.com/wehaox/Typecho-Butterfly" title="主题魔改自typecho-butterfly"><img
+            <a target="_blank" href="https://github.com/wehaox/Typecho-Butterfly" title="主题魔改自wehaox大佬移植的Typecho-Butterfly"><img
                     src="/usr/themes/butterfly/img/2.svg"></a>
             <a target="_blank" href="https://cloud.tencent.com/" title="本站托管于腾讯云服务器"><img
                     src="/usr/themes/butterfly/img/3.svg"></a>
             <a target="_blank" href="https://github.com/sinlatansen" title="网站源码储存于Github仓库"><img
                     src="/usr/themes/butterfly/img/4.svg"></a>
-            <a target="_blank" href="https://giscus.app/zh-CN" title="评论系统为giscus"><img
+            <a target="_blank" href="https://giscus.app/zh-CN" title="评论系统为Giscus"><img
                     src="/usr/themes/butterfly/img/5.svg"></a>
         </div>
     </div>
