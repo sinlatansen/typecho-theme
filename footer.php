@@ -121,6 +121,27 @@
         /* 调整备案图标的尺寸 */
         height: auto;
     }
+
+    @media (max-width: 600px) {
+        .footer-container {
+            padding: 20px;
+        }
+
+        .beian-info {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .beian-info img {
+            width: 25px;
+        }
+
+        .additional-links a {
+            display: block;
+            margin-bottom: 10px;
+        }
+    }
+
     </style>
     <div class="footer_custom_text">
         <?php $this->options->Customfooter() ?>
