@@ -607,7 +607,7 @@
             <hr>
             <div class="menus_items">
                 <div class="menus_item">
-                <a class="site-page dark-light" title="深/浅">
+                <a class="site-page dark-light-com" title="深/浅">
                    <i class="fas fa-adjust">
                     </i>
                    <span style="font-weight:650;"></span> 
@@ -615,13 +615,13 @@
             </div>
             <script>
                 const firstMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-                let firstSpanElement = document.querySelector('.dark-light span');
+                let firstSpanElement = document.querySelector('.dark-light-com span');
                 if(firstMode === 'light'){
                     firstSpanElement.textContent = 'Light';
                 }else{
                     firstSpanElement.textContent = 'Dark';
                 }
-                document.querySelector('.dark-light').addEventListener('click', function() {
+                document.querySelector('.dark-light-com').addEventListener('click', function() {
                     const nowMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
                     let spanElement = this.querySelector('span');
                     if (nowMode === 'light') {

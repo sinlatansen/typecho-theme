@@ -28,22 +28,23 @@
                 border-bottom-left-radius: 5px;
             }
             </style>
-            <div class="menus_item">
-                <a class="site-page dark-light" title="深/浅">
+            <div class="menus_items">
+                <div class="menus_item">
+                <a class="site-page dark-light-nav" title="深/浅">
                    <i class="fas fa-adjust">
                     </i>
                    <span style="font-weight:650;"></span> 
                 </a>
             </div>
             <script>
-                const firstMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-                let firstSpanElement = document.querySelector('.dark-light span');
+                // const firstMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+                let secondSpanElement = document.querySelector('.dark-light-nav span');
                 if(firstMode === 'light'){
-                    firstSpanElement.textContent = 'Light';
+                    secondSpanElement.textContent = 'Light';
                 }else{
-                    firstSpanElement.textContent = 'Dark';
+                    secondSpanElement.textContent = 'Dark';
                 }
-                document.querySelector('.dark-light').addEventListener('click', function() {
+                document.querySelector('.dark-light-nav').addEventListener('click', function() {
                     const nowMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
                     let spanElement = this.querySelector('span');
                     if (nowMode === 'light') {
@@ -68,7 +69,7 @@
                 });
             </script>
             <div class="menus_item">
-                <a class="site-page" title="首页" href="<?php $this->options->siteUrl(); ?>">
+                <a class="site-page" title="首页" href="/">
                     <i class="fas fa-home-alt"></i>
                     <span>首页</span>
                 </a>
