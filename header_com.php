@@ -8,6 +8,9 @@
 <html data-theme="light" class="">
 
 <head>
+    <!-- chart.js图标库 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- lottie动画库 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"></script>
 
