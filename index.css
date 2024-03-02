@@ -3862,6 +3862,12 @@ h1.page-title + .tag-cloud-list {
     background-attachment: fixed;
 }
 
+@media (max-width: 600px) {
+    #page-header.full_page {
+        background-attachment: scroll;
+    }
+}
+
 #page-header.full_page #site-info {
     position: absolute;
     top: 43%;
