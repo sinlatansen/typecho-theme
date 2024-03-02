@@ -1782,6 +1782,10 @@ figure.highlight pre .tag .attr {
     color: #4870ac;
 }
 
+[data-theme="dark"] #article-container code {
+    color: #0b90e9;
+}
+
 #article-container pre {
     padding: 10px 20px;
 }
@@ -3870,7 +3874,6 @@ h1.page-title + .tag-cloud-list {
     }
 }
 
-
 #page-header.full_page #site-info {
     position: absolute;
     top: 43%;
@@ -4746,9 +4749,9 @@ h1.page-title + .tag-cloud-list {
     color: var(--pseudo-hover);
 }
 
-#article-container.post-content ul > li {
+/* #article-container.post-content ul > li {
     list-style-type: circle;
-}
+} */
 
 #article-container > :last-child {
     margin-bottom: 0 !important;
@@ -6002,9 +6005,9 @@ blockquote.pullquote.right {
     color: #777;
 }
 
-.note.default:not(.no-icon)::before {
+/* .note.default:not(.no-icon)::before {
     content: "\f0a9";
-}
+} */
 
 .note.default:not(.no-icon):not(.modern)::before {
     color: #777;
@@ -6039,10 +6042,10 @@ blockquote.pullquote.right {
 .note.primary:not(.modern) h6 {
     color: #6f42c1;
 }
-
+/* 
 .note.primary:not(.no-icon)::before {
     content: "\f055";
-}
+} */
 
 .note.primary:not(.no-icon):not(.modern)::before {
     color: #6f42c1;
@@ -6078,9 +6081,9 @@ blockquote.pullquote.right {
     color: #428bca;
 }
 
-.note.info:not(.no-icon)::before {
+/* .note.info:not(.no-icon)::before {
     content: "\f05a";
-}
+} */
 
 .note.info:not(.no-icon):not(.modern)::before {
     color: #428bca;
@@ -6116,9 +6119,9 @@ blockquote.pullquote.right {
     color: #5cb85c;
 }
 
-.note.success:not(.no-icon)::before {
+/* .note.success:not(.no-icon)::before {
     content: "\f058";
-}
+} */
 
 .note.success:not(.no-icon):not(.modern)::before {
     color: #5cb85c;
@@ -6154,9 +6157,9 @@ blockquote.pullquote.right {
     color: #f0ad4e;
 }
 
-.note.warning:not(.no-icon)::before {
+/* .note.warning:not(.no-icon)::before {
     content: "\f06a";
-}
+} */
 
 .note.warning:not(.no-icon):not(.modern)::before {
     color: #f0ad4e;
@@ -6192,9 +6195,9 @@ blockquote.pullquote.right {
     color: #d9534f;
 }
 
-.note.danger:not(.no-icon)::before {
+/* .note.danger:not(.no-icon)::before {
     content: "\f056";
-}
+} */
 
 .note.danger:not(.no-icon):not(.modern)::before {
     color: #d9534f;
