@@ -92,6 +92,7 @@ body {
     animation: zoomIn 1s ease forwards, floatImage 4s ease-in-out infinite;
     animation-delay: 0.2s, 1.2s;
 }
+
 @keyframes zoomIn {
     0% {
         transform: scale(0);
@@ -121,6 +122,31 @@ body {
 #content-inner h3::before,
 #content-inner h4::before{
     content:""!important;
+}
+
+/* 移动端适配 */
+@media (max-width: 600px) {
+    #introduce {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding:0;
+    }
+    .infoImg img {
+        margin-right: 0;
+        margin-top: 70px;
+    }
+    #enginfo .I1{
+        font-size: 50px;
+        font-weight: 650;
+        margin:0;
+    }
+
+    #enginfo .I2{
+        font-size: 30px;
+        font-weight: 600;
+    }
+
 }
 </style>
 
