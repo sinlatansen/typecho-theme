@@ -386,7 +386,7 @@ pre code {
     position: relative;
     display: block;
     overflow-x: auto;
-    margin: 4.4px 0px 0.4px 1px;
+    margin: 4.4px 0px 24px 1px;
     padding: 0;
     max-height: 200px;
     padding: 8px 8px 8px 42px !important;
@@ -412,11 +412,11 @@ div.code-toolbar {
 
 /*代码块扩展按钮*/
 #article-container .code-expand-btn {
-    background: #f6f8fa !important;
+    background: transparent !important;
     border-radius: 7px;
 }
 [data-theme="dark"] #article-container .code-expand-btn {
-    background: #1c1c1c !important;
+    background: transparent !important;
 }
 
 #post-content pre code {
