@@ -646,7 +646,7 @@
                 });
             </script>
             <div class="menus_item">
-                <a class="site-page" title="首页" href="<?php $this->options->siteUrl(); ?>">
+                <a class="site-page" title="首页" href="/">
                     <i class="fas fa-home-alt"></i>
                     <span>首页</span>
                 </a>
