@@ -544,9 +544,34 @@
             document.getElementById('loading-overlay').style.opacity = '0';
             setTimeout(function() {
                 document.getElementById('loading-overlay').style.display = 'none';
+
+                // 检查页面上是否存在一个ID为 'typed' 的元素
+                var typedElement = document.getElementById('typed');
+                if (typedElement) {
+                    // 如果存在，那么就启动打字机动画
+                    var postTitle = "<?php echo addslashes($this->title()); ?>"; // 使用 addslashes 来处理标题中可能含有的单引号或双引号
+                    var options = {
+                        strings: [postTitle],
+                        typeSpeed: 80,
+                        backSpeed: 25,
+                        startDelay: 500,
+                        cursorChar: '😐', // 光标字符
+                        onComplete: function (self) {
+                            // 打字完成后将光标字符改为 '😀'
+                            var cursor = document.querySelector('.typed-cursor');
+                            if (cursor) {
+                                cursor.textContent = '😀'; // 更新光标的文本内容
+                            }
+                        }
+                    };
+                    var typed = new Typed('#typed', options); // 使用 '#typed' 作为选择器来匹配 ID
+                    console.log({ typed });
+                    console.log('typed初始化');
+                }
             }, 500);
         };
     });
+
     </script>
     <script src="<?php $this->options->themeUrl('/js/main.js?v1.7.3'); ?>"> </script>
     <script src="<?php $this->options->themeUrl('/js/utils.js?v1.7.3'); ?>"> </script>
