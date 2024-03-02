@@ -1,12 +1,4 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-/*
- * @Author: 林郅言 lllzzzyyy@buaa.edu.cn
- * @Date: 2024-02-26 11:45:09
- * @LastEditTime: 2024-02-29 21:20:27
- * @FilePath: \butterfly\post.php
- * @Description: 
- * 
- */
 <?php $this->need('post_header.php'); ?>
 <main class="layout" id="content-inner">
   <div id="post">
