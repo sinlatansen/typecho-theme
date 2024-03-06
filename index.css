@@ -1489,7 +1489,7 @@ hr {
     width: calc(100% - 4px);
 }
 
-hr:hover:before {
+/* hr:hover:before {
     left: calc(95% - 20px);
 }
 
@@ -1507,7 +1507,7 @@ hr:before {
     -o-transition: all 1s ease-in-out;
     -ms-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
-}
+} */
 
 .table-wrap {
     overflow-x: scroll;
