@@ -366,20 +366,53 @@
                     .setAttribute("content", "#0d0d0d")
                 var headerImg = document.querySelector('#page-header.full_page');
                 //切换深色模式背景图
-                headerImg.style.backgroundImage = "url(<?php $this->options->headerblackimg() ?>)";
+                if(headerImg){
+                    headerImg.style.backgroundImage = "url(<?php $this->options->headerblackimg() ?>)";
+                }
                 //切换深色模式头像
-                document.getElementById('img_hover').src = "https://s2.loli.net/2024/02/17/h41rvlyxgLnmcJK.jpg";
-            },
+                if(document.getElementById('img_hover')){
+                    document.getElementById('img_hover').src = "https://s2.loli.net/2024/02/17/h41rvlyxgLnmcJK.jpg";
+                }
+                //切换黑色评论区
+                document.querySelectorAll("iframe.giscus-frame")?.forEach(frame => {
+                frame.contentWindow.postMessage(
+                    {
+                    giscus: {
+                        setConfig: {
+                        theme: "dark",
+                        },
+                    },
+                    },
+                    "https://giscus.app"
+                );
+                });
+        },
             e.activateLightMode = () => {
                 document.documentElement.setAttribute("data-theme", "light"), null !== document.querySelector(
                         'meta[name="theme-color"]') && document.querySelector('meta[name="theme-color"]')
                     .setAttribute("content", "#ffffff")
                 var headerImg = document.querySelector('#page-header.full_page');
                 //切换浅色模式背景图
-                headerImg.style.backgroundImage = "url(<?php $this->options->headerimg() ?>)";
-                console.log('切换浅色：' + '<?php $this->options->headerimg() ?>');
+                if(headerImg){
+                    headerImg.style.backgroundImage = "url(<?php $this->options->headerimg() ?>)";
+                }
                 //切换浅色模式头像
-                document.getElementById('img_hover').src = document.getElementById('img_hover').dataset.lazySrc;
+                if(document.getElementById('img_hover')){
+                    document.getElementById('img_hover').src = document.getElementById('img_hover').dataset.lazySrc;
+                }
+                //切换浅色评论区
+                document.querySelectorAll("iframe.giscus-frame")?.forEach(frame => {
+                frame.contentWindow.postMessage(
+                    {
+                    giscus: {
+                        setConfig: {
+                        theme: "light",
+                        },
+                    },
+                    },
+                    "https://giscus.app"
+                );
+                });
             };
         const t = saveToLocal.get("theme"),
             a = <?php $this->options->darkModeSelect() ?> === 4,

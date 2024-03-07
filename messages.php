@@ -57,21 +57,35 @@ body {
 <div class="info">
     欢迎留下你的足迹。
 </div>
-<script src="https://giscus.app/client.js"
-    data-repo="sinlatansen/typecho-theme"
-    data-repo-id="R_kgDOLQA-Ow"
-    data-category="Announcements"
-    data-category-id="DIC_kwDOLQA-O84CdlEp"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="transparent_dark"
-    data-lang="zh-CN"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
+    <!-- 评论区 -->
+<div id="giscus-container"></div>
+
+<script>
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  (function() {
+      const script = document.createElement('script'); // 创建script元素
+      script.src = 'https://giscus.app/client.js';
+      script.async = true;
+      script.setAttribute('data-repo', 'sinlatansen/typecho-theme');
+      script.setAttribute('data-repo-id', 'R_kgDOLQA-Ow');
+      script.setAttribute('data-category', 'Announcements');
+      script.setAttribute('data-category-id', 'DIC_kwDOLQA-O84CdlEp');
+      script.setAttribute('data-mapping', 'pathname');
+      script.setAttribute('data-strict', '0');
+      script.setAttribute('data-reactions-enabled', '1');
+      script.setAttribute('data-emit-metadata', '0');
+      script.setAttribute('data-input-position', 'top');
+      script.setAttribute('data-lang', 'zh-CN');
+      script.setAttribute('data-loading', 'lazy');
+      script.crossOrigin = 'anonymous';
+
+      // 设置data-theme属性根据当前网站主题
+      const theme = (currentTheme === 'dark') ? 'dark' : 'light';
+      script.setAttribute('data-theme', theme);
+
+      // 将script元素插入到页面中
+      document.getElementById('giscus-container').appendChild(script); // 这里改为将script添加到giscus-container中
+  })();
 </script>
 </div>
 </main>
