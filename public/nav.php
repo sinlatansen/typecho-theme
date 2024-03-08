@@ -33,7 +33,7 @@
                 <a class="site-page dark-light-nav" title="深/浅">
                    <i class="fas fa-adjust">
                     </i>
-                   <span style="font-weight:650;"></span> 
+                   <span style="font-weight:600;"></span> 
                 </a>
             </div>
             <script>

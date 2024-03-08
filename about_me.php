@@ -14,12 +14,12 @@
 </header>
 
 <style>
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 
 body {
     min-height: 100vh;
@@ -61,10 +61,16 @@ body {
     padding: 70px;
 }
 
+@font-face {
+    font-family: "Silkscreen";
+    src: url(/usr/themes/butterfly/css/Silkscreen-Regular.ttf) format("truetype");
+}
+
+
 #enginfo{
     max-width: 600px;
     line-height: 1.5;
-
+    font-family: Silkscreen, sans-serif;
 }
 
 #enginfo .I1{
