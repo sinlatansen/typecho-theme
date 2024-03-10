@@ -2378,7 +2378,7 @@ figure.highlight pre .tag .attr {
     flex: 1 auto;
     margin: 0 auto;
     padding: 40px 15px;
-    max-width: 1200px;
+    max-width: 1400px;
     width: 100%;
 }
 
@@ -2875,7 +2875,7 @@ h1.page-title + .tag-cloud-list {
     position: relative;
     overflow: hidden;
     margin-top: 20px;
-    padding: 20px 24px;
+    padding: 15px 18px;
 }
 
 #aside-content .card-info .author-info__name {
@@ -3312,7 +3312,7 @@ h1.page-title + .tag-cloud-list {
 }
 
 #aside-content #card-toc .toc-content {
-    overflow-y: scroll;
+    overflow-y: scroljl;
     overflow-y: overlay;
     margin: 0 -24px;
     max-height: calc(100vh - 120px);
@@ -3325,7 +3325,7 @@ h1.page-title + .tag-cloud-list {
 }
 
 #aside-content #card-toc .toc-content > * {
-    margin: 0 20px !important;
+    margin: 0 12px !important;
 }
 
 #aside-content #card-toc .toc-content > * > .toc-item > .toc-child {
