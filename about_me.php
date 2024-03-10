@@ -222,6 +222,18 @@ body {
             <p>希望在这块小天地记录一下生活，输出一下想法。</p>
         </div>
 
+        <?php
+        $dataFile = __DIR__ . '/public/githubData.json';
+
+// 确保文件存在
+if (file_exists($dataFile)) {
+    // 读取并解码数据
+    $commitsData = json_decode(file_get_contents($dataFile), true);
+
+    // 使用 $commitsData 进行操作，如渲染到页面上
+} else {
+    echo "数据文件不存在。";
+}?>
         <div id="github">
             <div id="cal-heatmap"></div>
         </div>
