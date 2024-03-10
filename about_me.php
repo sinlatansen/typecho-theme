@@ -10,6 +10,10 @@
 
 <?php  $this->need('header_com.php'); ?>
 <header class="not-top-img" id="page-header">
+    <!-- github热力图 -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/cal-heatmap/dist/cal-heatmap.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/cal-heatmap/dist/cal-heatmap.css">
     <?php  $this->need('public/nav.php'); ?>
 </header>
 
@@ -219,8 +223,22 @@ body {
         </div>
 
         <div id="github">
-
+            <div id="cal-heatmap"></div>
         </div>
+        <script>
+        var cal = new CalHeatMap();
+        cal.init({
+            itemSelector: "#cal-heatmap",
+            domain: "month", // 定义时间域的范围，"month" 为月视图
+            subDomain: "day", // 定义子时间域的范围，"day" 为日视图
+            data: "你的数据源", // 数据源 URL 或数据对象
+            start: new Date(), // 热力图的开始日期
+            cellSize: 20, // 每个“格子”的大小
+            range: 6, // 显示多少个时间域（这里是 6 个月）
+            domainGutter: 10, // 时间域之间的间距
+            legend: [1, 5, 10, 15] // 图例（表示数据密度的颜色分级）
+        });
+        </script>
 
     </div>
 </main>
