@@ -366,52 +366,50 @@
                     .setAttribute("content", "#0d0d0d")
                 var headerImg = document.querySelector('#page-header.full_page');
                 //切换深色模式背景图
-                if(headerImg){
+                if (headerImg) {
                     headerImg.style.backgroundImage = "url(<?php $this->options->headerblackimg() ?>)";
                 }
                 //切换深色模式头像
-                if(document.getElementById('img_hover')){
+                if (document.getElementById('img_hover')) {
                     document.getElementById('img_hover').src = "https://s2.loli.net/2024/02/17/h41rvlyxgLnmcJK.jpg";
                 }
                 //切换黑色评论区
                 document.querySelectorAll("iframe.giscus-frame")?.forEach(frame => {
-                frame.contentWindow.postMessage(
-                    {
-                    giscus: {
-                        setConfig: {
-                        theme: "dark",
+                    frame.contentWindow.postMessage({
+                            giscus: {
+                                setConfig: {
+                                    theme: "dark",
+                                },
+                            },
                         },
-                    },
-                    },
-                    "https://giscus.app"
-                );
+                        "https://giscus.app"
+                    );
                 });
-        },
+            },
             e.activateLightMode = () => {
                 document.documentElement.setAttribute("data-theme", "light"), null !== document.querySelector(
                         'meta[name="theme-color"]') && document.querySelector('meta[name="theme-color"]')
                     .setAttribute("content", "#ffffff")
                 var headerImg = document.querySelector('#page-header.full_page');
                 //切换浅色模式背景图
-                if(headerImg){
+                if (headerImg) {
                     headerImg.style.backgroundImage = "url(<?php $this->options->headerimg() ?>)";
                 }
                 //切换浅色模式头像
-                if(document.getElementById('img_hover')){
+                if (document.getElementById('img_hover')) {
                     document.getElementById('img_hover').src = document.getElementById('img_hover').dataset.lazySrc;
                 }
                 //切换浅色评论区
                 document.querySelectorAll("iframe.giscus-frame")?.forEach(frame => {
-                frame.contentWindow.postMessage(
-                    {
-                    giscus: {
-                        setConfig: {
-                        theme: "light",
+                    frame.contentWindow.postMessage({
+                            giscus: {
+                                setConfig: {
+                                    theme: "light",
+                                },
+                            },
                         },
-                    },
-                    },
-                    "https://giscus.app"
-                );
+                        "https://giscus.app"
+                    );
                 });
             };
         const t = saveToLocal.get("theme"),
@@ -551,25 +549,25 @@
         <div id="lottie-animation" style="width: 30%; height: 30%;"></div>
     </div>
     <style>
-        #loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px); /* 高斯模糊 */
-            z-index: 9999;
-        }
-
+    #loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(5px);
+        /* 高斯模糊 */
+        z-index: 9999;
+    }
     </style>
     <script>
     document.addEventListener("DOMContentLoaded", function(event) {
         var animation = lottie.loadAnimation({
-            container: document.getElementById('lottie-animation'), 
-            path: '/usr/themes/butterfly/img/loadingBlue.json', 
+            container: document.getElementById('lottie-animation'),
+            path: '/usr/themes/butterfly/img/loadingBlue.json',
             renderer: 'svg', // Required
             loop: true, // Optional
             autoplay: true, // Optional
@@ -585,14 +583,15 @@
                 var typedElement = document.getElementById('typed');
                 if (typedElement) {
                     // 如果存在，那么就启动打字机动画
-                    var postTitle = "<?php echo addslashes($this->title()); ?>"; // 使用 addslashes 来处理标题中可能含有的单引号或双引号
+                    var postTitle =
+                    "<?php echo addslashes($this->title()); ?>"; // 使用 addslashes 来处理标题中可能含有的单引号或双引号
                     var options = {
                         strings: [postTitle],
                         typeSpeed: 80,
                         backSpeed: 25,
                         startDelay: 500,
                         cursorChar: '😐', // 光标字符
-                        onComplete: function (self) {
+                        onComplete: function(self) {
                             // 打字完成后将光标字符改为 '😀'
                             var cursor = document.querySelector('.typed-cursor');
                             if (cursor) {
@@ -601,13 +600,14 @@
                         }
                     };
                     var typed = new Typed('#typed', options); // 使用 '#typed' 作为选择器来匹配 ID
-                    console.log({ typed });
+                    console.log({
+                        typed
+                    });
                     console.log('typed初始化');
                 }
             }, 500);
         };
     });
-
     </script>
     <script src="<?php $this->options->themeUrl('/js/main.js?v1.7.3'); ?>"> </script>
     <script src="<?php $this->options->themeUrl('/js/utils.js?v1.7.3'); ?>"> </script>
@@ -668,50 +668,54 @@
             <hr>
             <div class="menus_items">
                 <div class="menus_item">
-                <a class="site-page dark-light-com" title="深/浅">
-                   <i class="fas fa-adjust">
-                    </i>
-                   <span style="font-weight:650;"></span> 
-                </a>
-            </div>
-            <script>
+                    <a class="site-page dark-light-com" title="深/浅">
+                        <i class="fas fa-adjust">
+                        </i>
+                        <span style="font-weight:650;"></span>
+                    </a>
+                </div>
+                <script>
                 const firstMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
                 let firstSpanElement = document.querySelector('.dark-light-com span');
-                if(firstMode === 'light'){
+                if (firstMode === 'light') {
                     firstSpanElement.textContent = 'Light';
-                }else{
+                } else {
                     firstSpanElement.textContent = 'Dark';
                 }
                 document.querySelector('.dark-light-com').addEventListener('click', function() {
-                    const nowMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+                    const nowMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' :
+                        'light';
                     let spanElement = this.querySelector('span');
                     if (nowMode === 'light') {
                         spanElement.textContent = 'Dark';
                         activateDarkMode();
                         saveToLocal.set('theme', 'dark', 2);
-                        GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night);
-                        
+                        GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar
+                            .day_to_night);
+
                     } else {
                         spanElement.textContent = 'Light';
                         activateLightMode();
                         saveToLocal.set('theme', 'light', 2);
-                        GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day);
-                        
+                        GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar
+                            .night_to_day);
+
                     }
                     // handle some cases
                     typeof utterancesTheme === 'function' && utterancesTheme();
                     typeof changeGiscusTheme === 'function' && changeGiscusTheme();
                     typeof FB === 'object' && window.loadFBComment();
-                    window.DISQUS && document.getElementById('disqus_thread').children.length && setTimeout(() => window.disqusReset(), 200);
+                    window.DISQUS && document.getElementById('disqus_thread').children.length && setTimeout(
+                    () => window.disqusReset(), 200);
                     typeof runMermaid === 'function' && window.runMermaid();
                 });
-            </script>
-            <div class="menus_item">
-                <a class="site-page" title="首页" href="/">
-                    <i class="fas fa-home-alt"></i>
-                    <span>首页</span>
-                </a>
-            </div>
+                </script>
+                <div class="menus_item">
+                    <a class="site-page" title="首页" href="/">
+                        <i class="fas fa-home-alt"></i>
+                        <span>首页</span>
+                    </a>
+                </div>
                 <div class="menus_item">
                     <a class="site-page search search-form-input search-btn">
                         <i class="fas fa-search fa-fw"></i>
@@ -747,10 +751,10 @@
                     </ul>
                 </div>
                 <div class="menus_item">
-                <a class="site-page" title="留言板" href="/messages.html">
-                    <i class="fas fa-sticky-note"></i>
-                    <span>留言板</span>
-                </a>
+                    <a class="site-page" title="留言板" href="/messages.html">
+                        <i class="fas fa-sticky-note"></i>
+                        <span>留言板</span>
+                    </a>
                 </div>
                 <div class="menus_item">
                     <a class="site-page" title="关于" href="/about-me.html">

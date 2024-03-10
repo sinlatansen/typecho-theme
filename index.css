@@ -5266,9 +5266,11 @@ h1.page-title + .tag-cloud-list {
     padding-right: 4px;
 }
 
-#waline-wrap textarea {
-    background: url(/img/comment_bg.png) 100% 100% no-repeat;
+/* waline-wrap textarea {
+    background: url(/usr/themes/butterfly/img/comment_bg.png) 100% 100%
+        no-repeat;
 }
+ */
 
 #waline-wrap textarea:focus {
     background-image: none;
