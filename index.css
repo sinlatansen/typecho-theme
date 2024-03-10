@@ -4668,7 +4668,6 @@ h1.page-title + .tag-cloud-list {
 
 #article-container.post-content h1:before {
     margin-left: -26px;
-    font-size: 20px;
 }
 
 #article-container.post-content h1:hover {
@@ -4681,7 +4680,6 @@ h1.page-title + .tag-cloud-list {
 
 #article-container.post-content h2:before {
     margin-left: -24px;
-    font-size: 18px;
 }
 
 #article-container.post-content h2:hover {
@@ -4694,7 +4692,6 @@ h1.page-title + .tag-cloud-list {
 
 #article-container.post-content h3:before {
     margin-left: -22px;
-    font-size: 16px;
 }
 
 #article-container.post-content h3:hover {
@@ -4707,7 +4704,6 @@ h1.page-title + .tag-cloud-list {
 
 #article-container.post-content h4:before {
     margin-left: -20px;
-    font-size: 14px;
 }
 
 #article-container.post-content h4:hover {
@@ -4720,7 +4716,6 @@ h1.page-title + .tag-cloud-list {
 
 #article-container.post-content h5:before {
     margin-left: -18px;
-    font-size: 12px;
 }
 
 #article-container.post-content h5:hover {
@@ -4733,7 +4728,6 @@ h1.page-title + .tag-cloud-list {
 
 #article-container.post-content h6:before {
     margin-left: -18px;
-    font-size: 12px;
 }
 
 #article-container.post-content h6:hover {
