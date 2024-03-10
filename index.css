@@ -4666,10 +4666,10 @@ h1.page-title + .tag-cloud-list {
     content: "😀";
 }
 
-/* #article-container.post-content h1:before {
+#article-container.post-content h1:before {
     margin-left: -26px;
     font-size: 20px;
-} */
+}
 
 #article-container.post-content h1:hover {
     padding-left: 38px;
