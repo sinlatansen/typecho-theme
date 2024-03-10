@@ -1,6 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('post_header.php'); ?>
-<main class="layout" id="content-inner">
+<main class="layout" id="content-inner" style="max-width: 1400px;">
   <div id="post">
     <?php if (is_array($this->options->beautifyBlock) && !in_array('PostShowTopimg', $this->options->beautifyBlock)) : ?>
       <div id="post-info">
