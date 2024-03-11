@@ -304,13 +304,15 @@ body {
                 var cellSize = 15; // 默认单元格大小
                 var range = 6; // 默认范围
                 var domainGutter = 15; // 默认间距
+                var startDay = start: new Date(new Date().getFullYear(), new Date().getMonth() - 5, 1),
 
-                // 如果屏幕宽度小于1054px，调整参数
-                if (width <= 1054) {
-                    cellSize = 15; // 缩小单元格大小
-                    range = 3; // 缩小显示范围
-                    domainGutter = 10; // 减小间距
-                }
+                    // 如果屏幕宽度小于1054px，调整参数
+                    if (width <= 1054) {
+                        cellSize = 15; // 缩小单元格大小
+                        range = 3; // 缩小显示范围
+                        domainGutter = 10; // 减小间距
+                        start: new Date(new Date().getFullYear(), new Date().getMonth() - 3, 1),
+                    }
 
                 cal.init({
                     itemSelector: "#cal-heatmap",
