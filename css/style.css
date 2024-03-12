@@ -503,8 +503,7 @@ code.language-yaml {
     left: 0.7rem !important;
 }
 .line-numbers .line-numbers-rows {
-    left: -8px !important;
-    top: 10px !important;
+    top: 8px !important;
 }
 code[class*="language-"],
 pre[class*="language-"] {
