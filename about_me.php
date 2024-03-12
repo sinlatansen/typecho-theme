@@ -10,11 +10,6 @@
 
 <?php $this->need('header_com.php'); ?>
 <header class="not-top-img" id="page-header">
-    <!-- github热力图 -->
-    <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
-
     <?php $this->need('public/nav.php'); ?>
 </header>
 
@@ -166,38 +161,31 @@ body {
     color: #49b1f5;
 }
 
-#cal-heatmap-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-}
-
-#cal-heatmap {
-    /* 确保热力图适应其容器 */
-    max-width: 100%;
-    /* 防止热力图超出容器宽度 */
-    margin: auto;
-    /* 居中显示 */
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px #b7b2a9;
-}
-
-
 #heatmapinfo .I2 {
     font-family: Silkscreen, sans-serif;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 700;
     text-align: center;
-    margin-top: 80px;
+    margin-top: 60px;
 }
 
-.graph-label {
-    font-size: 14px;
+
+.imgContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
 }
+
+.imgContainer img {
+    width: 80%;
+    max-width: 100%;
+    /* 设置图片的最大宽度为容器的宽度 */
+    max-height: 100%;
+    /* 设置图片的最大高度为容器的高度 */
+    object-fit: contain;
+    /* 保证图片始终适合容器 */
+}
+
 
 /* 移动端适配 */
 @media (max-width: 600px) {
@@ -260,98 +248,12 @@ body {
             <p>但是很享受这种，只是单纯求知欲去探索的状态，而不是为了靠这些知识通过考试或者拿到工作。</p>
             <p>希望在这块小天地记录一下生活，输出一下想法。</p>
         </div>
-
-
-        <?php
-        $dataFile = __DIR__ . '/public/githubData.json';
-
-        // 确保文件存在
-        if (file_exists($dataFile)) {
-            // 读取并解码数据
-            $commitsData = json_decode(file_get_contents($dataFile), true);
-
-            // 转换数据为 Cal-HeatMap 所需格式
-            $transformedData = [];
-            foreach ($commitsData as $date => $count) {
-                // 转换日期为时间戳（秒）
-                $timestamp = strtotime($date);
-                $transformedData[$timestamp] = $count;
-            }
-
-            // 准备嵌入到页面的 JSON 数据
-            $jsonDataForCalHeatMap = json_encode($transformedData);
-        } else {
-            echo "数据文件不存在。";
-            $jsonDataForCalHeatMap = '{}'; // 确保前端有一个空对象处理
-        }
-        ?>
         <div id="heatmapinfo">
             <div class="I2">My github heatmap</div>
         </div>
-        <div id="cal-heatmap-container">
-            <div id="cal-heatmap"></div>
+        <div class="imgContainer">
+            <img src="https://ghchart.rshah.org//sinlatansen" />
         </div>
-
-        <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
-            var cal; // Define cal variable but do not initialize it here
-
-            function initCalHeatMap() {
-                cal = new CalHeatMap(); // Initialize cal inside the function
-
-                var width = window.innerWidth || document.documentElement.clientWidth || document.body
-                    .clientWidth;
-                var cellSize = 15; // Default cell size
-                var range = 6; // Default range
-                var domainGutter = 15; // Default gutter
-                var startDay = new Date(new Date().getFullYear(), new Date().getMonth() - 5, 1);
-
-                // Adjust parameters if screen width is less than 1054px
-                if (width <= 1054) {
-                    cellSize = 15; // Reduce cell size
-                    range = 3; // Reduce display range
-                    domainGutter = 10; // Reduce gutter
-                    startDay = new Date(new Date().getFullYear(), new Date().getMonth() - 3,
-                        1); // Adjust start day
-                }
-
-                cal.init({
-                    itemSelector: "#cal-heatmap",
-                    domain: "month",
-                    subDomain: "day",
-                    data: <?= $jsonDataForCalHeatMap ?>, // Use PHP variable
-                    start: startDay,
-                    cellSize: cellSize,
-                    range: range,
-                    domainGutter: domainGutter,
-                    legend: [1, 3, 5, 7, 9, 11],
-                    tooltip: true,
-                    cellRadius: 5,
-                    legendColors: {
-                        min: "#efefef", // Color for days without commits (grey)
-                        max: "steelblue", // Adjust according to your needs
-                        empty: "#efefef" // Ensure days without commits are also displayed in grey
-                    },
-                    legendHorizontalPosition: 'right',
-                    legendVerticalPosition: 'center',
-                    legendOrientation: 'vertical',
-                    subDomainTitleFormat: {
-                        empty: '{date} did not have any commits 🎈',
-                        filled: '{date} had {count} commits! 🎉',
-                    },
-                });
-            }
-
-            initCalHeatMap(); // Initialize the heatmap when the page first loads
-
-            window.addEventListener('resize', function() {
-                if (cal) {
-                    cal.destroy(); // Destroy the old heatmap instance
-                }
-                initCalHeatMap(); // Reinitialize
-            });
-        });
-        </script>
     </div>
 </main>
 
