@@ -199,6 +199,7 @@ body {
     .infoImg img {
         margin-right: 0;
         margin-top: 70px;
+        margin-bottom: 30px;
     }
 
     #enginfo .I1 {
@@ -219,6 +220,19 @@ body {
         font-family: "IBM Plex Mono", SimSun, STFangsong;
         font-weight: 600;
     }
+
+
+    #heatmapinfo .I2 {
+        font-size: 30px;
+        font-weight: 700;
+        text-align: center;
+        margin-top: 60px;
+    }
+
+    .imgContainer img {
+        width: 100%;
+    }
+
 }
 </style>
 
