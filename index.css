@@ -4671,7 +4671,7 @@ h1.page-title + .tag-cloud-list {
 }
 
 #article-container.post-content h1:hover {
-    padding-left: 38px;
+    padding-left: 15px;
 }
 
 /* #article-container.post-content h2 {
