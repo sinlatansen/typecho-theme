@@ -7,7 +7,8 @@
  * @Description: 
  * 
  */
-function getBadge($badgeUrl) {
+function getBadge($badgeUrl)
+{
     // 使用cURL进行请求
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $badgeUrl);
@@ -24,4 +25,3 @@ $badgeUrl = 'https://img.shields.io/badge/Comments-Giscus-FF0000?logo=data:image
 echo getBadge($badgeUrl);
 // 如果没有指定badge参数，可以返回错误信息或者默认页面
 // echo "No badge specified";
-?>

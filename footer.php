@@ -35,8 +35,8 @@
                     var seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000); // 计算秒数
 
                     // 更新页面上显示的时间
-                    document.getElementById('runTimeDisplay').innerHTML = days + " 天 " + hours + " 小时 " + minutes + " 分钟 " +
-                        seconds + " 秒";
+                    document.getElementById('runTimeDisplay').innerHTML = days + "天" + hours + "小时" + minutes + "分钟" +
+                        seconds + "秒";
                 }
 
                 // 每秒调用 updateRunTime 函数一次
@@ -49,7 +49,6 @@
                 <div class="beian-info">
                     <a href="http://www.beian.miit.gov.cn" target="_blank">鄂ICP备2024037645号</a>
                     <a href="https://beian.mps.gov.cn/#/query/webSearch?code=42011702000772" target="_blank">
-                        <img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" alt="备案图标" style="margin-right:8px;">
                         鄂公网安备42011702000772
                     </a>
                 </div>
@@ -68,11 +67,12 @@
                 });
             </script>
             <div class="additional-links">
-                <a target="_blank" href="https://typecho.org/" title="博客框架为Typecho_v1.2.1"><img src="/usr/themes/butterfly/img/1.svg"></a>
-                <a target="_blank" href="https://github.com/wehaox/Typecho-Butterfly" title="主题魔改自wehaox大佬移植的Typecho-Butterfly"><img src="/usr/themes/butterfly/img/2.svg"></a>
-                <a target="_blank" href="https://cloud.tencent.com/" title="本站托管于腾讯云服务器"><img src="/usr/themes/butterfly/img/3.svg"></a>
-                <a target="_blank" href="https://github.com/sinlatansen" title="网站源码储存于Github仓库"><img src="/usr/themes/butterfly/img/4.svg"></a>
-                <a target="_blank" href="https://giscus.app/zh-CN" title="评论系统为Giscus"><img src="/usr/themes/butterfly/img/5.svg"></a>
+                <a target="_blank" href="https://typecho.org/" title="博客框架为Typecho_v1.2.1"><img src="/usr/themes/butterfly/img/typecho.svg"></a>
+                <a target="_blank" href="https://github.com/wehaox/Typecho-Butterfly" title="主题魔改自wehaox大佬移植的Typecho-Butterfly"><img src="/usr/themes/butterfly/img/butterfly.svg"></a>
+                <a target="_blank" href="https://cloud.tencent.com/" title="本站托管于腾讯云服务器"><img src="/usr/themes/butterfly/img/tencent.svg"></a>
+                <a target="_blank" href="https://github.com/sinlatansen" title="网站源码储存于Github仓库"><img src="/usr/themes/butterfly/img/github.svg"></a>
+                <a target="_blank" href="https://giscus.app/zh-CN" title="评论系统为Giscus"><img src="/usr/themes/butterfly/img/giscus.svg"></a>
+                <a target="_blank" href="https://icp.gov.moe/?keyword=20240624" title="本站已加入萌ICP备"><img src="/usr/themes/butterfly/img/mengICP.svg"></a>
             </div>
         </div>
         <style>
@@ -100,6 +100,11 @@
             .additional-links a {
                 text-decoration: none;
                 margin-right: 20px;
+            }
+
+            .additional-links img {
+                height: 20px;
+                width: auto;
             }
 
             .footer-container a:hover {
@@ -137,6 +142,15 @@
                 .additional-links a {
                     display: block;
                     margin-bottom: 10px;
+                }
+
+                .copyright {
+                    margin-bottom: 15px;
+                }
+
+                .additional-links img {
+                    height: auto;
+                    width: 120px;
                 }
             }
         </style>
