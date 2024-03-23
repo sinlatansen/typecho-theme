@@ -12,7 +12,8 @@ $activeUsersUrl = $config['activeUsersUrl'];
 $statsUrlBase = $config['statsUrlBase'];
 
 // Function to perform a cURL request
-function curlRequest($url, $postFields = null, $headers = []) {
+function curlRequest($url, $postFields = null, $headers = [])
+{
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -39,7 +40,8 @@ $token = $authResponse['token'] ?? '';
 if ($token) {
     // Fetch active users
     $activeUsersData = curlRequest($activeUsersUrl, null, ['Authorization: Bearer ' . $token]);
-    $activeUsers = $activeUsersData[0]['x'] ?? 'Unavailable';
+    $activeUsers = $activeUsersData['x'] ?? 'Unavailable';
+
 
     // Construct stats URL with time range
     $startAt = strtotime('2024-02-20') * 1000; // Time range start
