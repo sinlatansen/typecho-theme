@@ -19,14 +19,14 @@
 
     <!-- umami跟踪代码 -->
     <!-- 1.直接跟踪 -->
-    <!-- <script async src="http://umami.lzyyyyyy.fun/script.js" data-website-id="d8ab60de-787e-4a23-aa7e-18d973cdf394"></script> -->
+    <!-- <script async src="http://umami.lzyyyyyy.fun/script.js" data-website-id="7ca8c49a-27e0-40a4-ac8b-442b2403330a"></script> -->
     <!-- 2.缓存方法 -->
     <!-- <script>
     if (!localStorage.getItem('disableUmami')) {
       var script = document.createElement('script');
       script.async = true;
       script.src = "http://umami.lzyyyyyy.fun/script.js";
-      script.setAttribute("data-website-id", "d8ab60de-787e-4a23-aa7e-18d973cdf394");
+      script.setAttribute("data-website-id", "7ca8c49a-27e0-40a4-ac8b-442b2403330a");
       document.head.appendChild(script);
     }
   </script> -->
@@ -44,7 +44,7 @@
         var script = document.createElement('script');
         script.async = true;
         script.src = "http://umami.lzyyyyyy.fun/script.js";
-        script.setAttribute("data-website-id", "d8ab60de-787e-4a23-aa7e-18d973cdf394");
+        script.setAttribute("data-website-id", "7ca8c49a-27e0-40a4-ac8b-442b2403330a");
         // 限制数据域名，让win10本地调试不跟踪
         script.setAttribute("data-domains", "lzyyyyyy.fun,www.lzyyyyyy.fun");
         // 进行数据缓存
